@@ -1,6 +1,13 @@
 import os
 import subprocess
 import csv
+import sys
+
+# 获取当前脚本的路径
+script_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
+
+# 切换到当前脚本所在的目录
+os.chdir(script_dir)
 
 # 定义文件路径
 cfst_path = "cfst"
@@ -9,9 +16,6 @@ result_file = "result.csv"
 cfip_file = "cfip.txt"
 output_txt = "cfip.txt"
 commit_message = "Update result.csv and cfip.txt"
-
-# 获取当前路径作为仓库路径
-repo_dir = os.getcwd()
 
 # 检查 cfst 文件是否存在
 if not os.path.exists(cfst_path):
@@ -32,6 +36,9 @@ if not os.path.exists(cfst_path):
     
     # 设置 cfst 文件为可执行
     subprocess.run(["chmod", "+x", "cfst"], check=True)
+
+    # 设置 cfst.py 文件为可执行    
+    subprocess.run(["chmod", "+x", "cfst.py"], check=True)
 
 # 删除 result.csv 和 cfip.txt 文件
 if os.path.exists(result_file):
@@ -60,9 +67,6 @@ with open(output_txt, mode="w", encoding="utf-8") as txtfile:
 print(f"提取的 IP 地址已保存到 {output_txt}")
 
 # Git 上传步骤
-# 进入到 Git 仓库目录
-os.chdir(repo_dir)
-
 # 执行 Git 操作
 subprocess.run(["git", "add", result_file, cfip_file], check=True)
 subprocess.run(["git", "commit", "-m", commit_message], check=True)
