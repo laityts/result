@@ -8,6 +8,10 @@ tar_file = "CloudflareST_linux_arm64.tar.gz"
 result_file = "result.csv"
 cfip_file = "cfip.txt"
 output_txt = "cfip.txt"
+commit_message = "Update result.csv and cfip.txt"
+
+# 获取当前路径作为仓库路径
+repo_dir = os.getcwd()
 
 # 检查 cfst 文件是否存在
 if not os.path.exists(cfst_path):
@@ -54,3 +58,14 @@ with open(output_txt, mode="w", encoding="utf-8") as txtfile:
         txtfile.write(ip + "\n")
 
 print(f"提取的 IP 地址已保存到 {output_txt}")
+
+# Git 上传步骤
+# 进入到 Git 仓库目录
+os.chdir(repo_dir)
+
+# 执行 Git 操作
+subprocess.run(["git", "add", result_file, cfip_file], check=True)
+subprocess.run(["git", "commit", "-m", commit_message], check=True)
+subprocess.run(["git", "push", "-u", "origin", "main"], check=True)
+
+print("已将文件上传到 GitHub 仓库。")
