@@ -66,6 +66,8 @@ os.chdir(repo_dir)
 # 执行 Git 操作
 subprocess.run(["git", "add", result_file, cfip_file], check=True)
 subprocess.run(["git", "commit", "-m", commit_message], check=True)
+
+# 推送到 GitHub（免交互）
 subprocess.run(["git", "push", "-u", "origin", "main"], check=True)
 
 print("已将文件上传到 GitHub 仓库。")
