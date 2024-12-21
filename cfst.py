@@ -37,9 +37,6 @@ if not os.path.exists(cfst_path):
     # 设置 cfst 文件为可执行
     subprocess.run(["chmod", "+x", "cfst"], check=True)
 
-    # 设置 cfst.py 文件为可执行    
-    subprocess.run(["chmod", "+x", "cfst.py"], check=True)
-
 # 删除 result.csv 和 cfip.txt 文件
 if os.path.exists(result_file):
     os.remove(result_file)
