@@ -46,7 +46,7 @@ if os.path.exists(cfip_file):
     print(f"已删除 {cfip_file} 文件。")
 
 # 执行 cfst 命令
-subprocess.run(["./cfst", "-httping", "-tl", "120", "-cfcolo", "HKG", "-sl", "5"], check=True)
+subprocess.run(["./cfst", "-httping", "-tl", "120", "-cfcolo", "HKG,SJC,LAX", "-sl", "5", "-dn", "20"], check=True)
 
 # 提取 IP 地址并保存到 cfip.txt
 ip_addresses = []
