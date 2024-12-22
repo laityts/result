@@ -126,7 +126,7 @@ print(f"提取的 IP 地址和 colo 信息已保存到 {output_txt}")
 
 # Git 上传步骤
 try:
-    subprocess.run(["git", "add", result_file, cfip_file], check=True)
+    subprocess.run(["git", "add", result_file, cfip_file, log_file], check=True)
     subprocess.run(["git", "commit", "-m", commit_message], check=True)
     subprocess.run(["git", "push", "-u", "origin", "main"], check=True)
     print("已将文件上传到 GitHub 仓库。")
