@@ -4,6 +4,14 @@ import csv
 import sys
 import requests
 
+# 检查是否已安装 requests
+try:
+    import requests
+    print("requests 已安装")
+except ImportError:
+    print("requests 未安装，正在安装...")
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "requests"])
+
 # 获取当前脚本的路径
 script_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
 
@@ -104,7 +112,7 @@ remove_file(cfip_file)
 remove_file(log_file)
 
 # 执行 cfst 命令，使用变量传递 cfcolo
-subprocess.run(["./cfst", "-httping", "-cfcolo", cfcolo, "-tl", "150", "-tp", "443", "-sl", "5", "-dn", "20", "-p", "20"], check=True)
+subprocess.run(["./cfst", "-httping", "-cfcolo", cfcolo, "-tl", "200", "-tp", "443", "-sl", "5", "-dn", "20", "-p", "10"], check=True)
 
 # 提取 IP 地址并保存到 cfip.txt
 ip_addresses = []
