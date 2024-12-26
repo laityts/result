@@ -112,7 +112,7 @@ remove_file(cfip_file)
 remove_file(log_file)
 
 # 执行 cfst 命令，使用变量传递 cfcolo
-subprocess.run(["./cfst", "-httping", "-cfcolo", cfcolo, "-tl", "200", "-tp", "443", "-sl", "5", "-dn", "20", "-p", "10"], check=True)
+subprocess.run(["./cfst", "-httping", "-cfcolo", cfcolo, "-tl", "200", "-tp", "443", "-sl", "5", "-dn", "10"], check=True)
 
 # 提取 IP 地址并保存到 cfip.txt
 ip_addresses = []
@@ -134,7 +134,7 @@ print(f"提取的 IP 地址和 colo 信息已保存到 {output_txt}")
 
 # Git 上传步骤
 try:
-    subprocess.run(["git", "add", result_file, cfip_file, log_file], check=True)
+    subprocess.run(["git", "add", "."], check=True)
     subprocess.run(["git", "commit", "-m", commit_message], check=True)
     subprocess.run(["git", "push", "-u", "origin", "main"], check=True)
     print("已将文件上传到 GitHub 仓库。")
