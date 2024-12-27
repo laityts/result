@@ -40,34 +40,32 @@ def remove_file(file_path):
         os.remove(file_path)
         print(f"已删除 {file_path} 文件。")
 
-# 获取IP的colo信息，并将完整数据写入日志文件
+# 获取 IP 的 colo 信息，并将完整数据写入日志文件
 def get_colo(ip_address):
-    """获取IP的colo信息并写入日志文件"""
-    url = f'http://{ip_address}/cdn-cgi/trace'
+    """获取 IP 的 colo 信息并写入日志文件"""
+    api_url = f"https://proxyip.edtunnel.best/api?ip={ip_address}&host=speed.cloudflare.com&port=443&tls=true"
     
     try:
         # 发送 GET 请求
-        response = requests.get(url)
+        response = requests.get(api_url, headers={"User-Agent": "Mozilla/5.0"})
         
         # 如果请求成功
         if response.status_code == 200:
-            data = response.text
+            data = response.json()
             # 将完整的响应数据写入日志文件
             with open(log_file, mode="a", encoding="utf-8") as log:
                 log.write(f"完整数据来自 {ip_address}:\n")
-                log.write(data + "\n\n")
+                log.write(str(data) + "\n\n")
             
-            # 查找并提取colo信息
-            for line in data.splitlines():
-                if line.startswith('colo='):
-                    return line.split('=')[1]
+            # 返回 colo 信息
+            return data.get("colo", "Proxy")
         else:
-            print(f"Request failed for IP {ip_address} with status code: {response.status_code}")
+            print(f"API 请求失败，IP {ip_address}，状态码: {response.status_code}")
     
     except requests.exceptions.RequestException as e:
-        print(f"An error occurred for IP {ip_address}: {e}")
+        print(f"IP {ip_address} 的请求发生错误: {e}")
     
-    return "CF优选"
+    return "Proxy"
 
 # 检查 cfst 文件是否存在
 if not os.path.exists(cfst_path):
@@ -112,7 +110,7 @@ remove_file(cfip_file)
 remove_file(log_file)
 
 # 执行 cfst 命令，使用变量传递 cfcolo
-subprocess.run(["./cfst", "-f", "proxy.txt", "-o", "resultfd.csv", "-httping", "-cfcolo", cfcolo, "-tl", "300", "-tll", "20", "-tp", "443"], check=True)
+subprocess.run(["./cfst", "-f", "proxy.txt", "-o", "resultfd.csv", "-httping", "-cfcolo", cfcolo, "-tl", "200", "-tll", "20", "-tp", "443"], check=True)
 
 # 提取 IP 地址并保存到 cfip.txt
 ip_addresses = []

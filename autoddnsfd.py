@@ -52,7 +52,11 @@ LOCATION_TO_DOMAIN = {
     "SIN": "sg.616049.xyz",   # 樟宜机场
     
     # CF优选
-    "CF优选": "cf.616049.xyz"  # CF优选
+    "CF优选": "cf.616049.xyz",  # CF优选
+    
+    # Proxy
+    "Proxy": "proxy.616049.xyz"  # Proxy
+    
 }
 
 # 从 cfip.txt 文件中读取前十个 IP 和标记
@@ -111,7 +115,7 @@ def add_dns_record(domain, ip):
 
 # 主程序
 if __name__ == "__main__":
-    ip_data = get_ips_from_file("cfip.txt")
+    ip_data = get_ips_from_file("cfipfd.txt")
     if not ip_data:
         print("未读取到 IP 数据，请检查 cfip.txt 文件格式是否正确。")
     else:
