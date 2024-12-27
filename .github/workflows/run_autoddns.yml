@@ -32,3 +32,4 @@ jobs:
     - name: Run autoddns script
       run: |
         python autoddns.py
+        python autoddnsv6.py

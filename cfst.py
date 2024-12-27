@@ -112,7 +112,7 @@ remove_file(cfip_file)
 remove_file(log_file)
 
 # 执行 cfst 命令，使用变量传递 cfcolo
-subprocess.run(["./cfst", "-httping", "-cfcolo", cfcolo, "-tl", "200", "-tll", "40", "-tp", "443", "-sl", "5", "-dn", "10"], check=True)
+subprocess.run(["./cfst", "-httping", "-cfcolo", cfcolo, "-tl", "200", "-tll", "20", "-tp", "443", "-sl", "5", "-dn", "10"], check=True)
 
 # 提取 IP 地址并保存到 cfip.txt
 ip_addresses = []
