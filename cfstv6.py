@@ -67,7 +67,7 @@ def get_colo(ip_address):
     except requests.exceptions.RequestException as e:
         print(f"An error occurred for IP {ip_address}: {e}")
     
-    return "Could not retrieve colo"
+    return "CF优选"
 
 # 检查 cfst 文件是否存在
 if not os.path.exists(cfst_path):
@@ -112,7 +112,7 @@ remove_file(cfip_file)
 remove_file(log_file)
 
 # 执行 cfst 命令，使用变量传递 cfcolo
-subprocess.run(["./cfst", "-f", "ipv6.txt", "-o", "resultv6.csv", "-httping", "-cfcolo", cfcolo, "-tl", "100", "-tp", "443", "-sl", "5", "-dn", "10"], check=True)
+subprocess.run(["./cfst", "-f", "ipv6.txt", "-o", "resultv6.csv", "-httping", "-cfcolo", cfcolo, "-tl", "100", "-tll", "40", "-tp", "443", "-sl", "5", "-dn", "10"], check=True)
 
 # 提取 IP 地址并保存到 cfip.txt
 ip_addresses = []
