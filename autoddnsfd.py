@@ -14,49 +14,45 @@ if not all([API_KEY, EMAIL, ZONE_ID]):
 # 域名与标记映射关系（扩展机场三字码）
 LOCATION_TO_DOMAIN = {
     # 美国
-    "SJC": "us.616049.xyz",  # 圣何塞
-    "LAX": "us.616049.xyz",  # 洛杉矶
-    "SEA": "us.616049.xyz",  # 西雅图
-    "JFK": "us.616049.xyz",  # 纽约 - 肯尼迪国际机场
-    "ORD": "us.616049.xyz",  # 芝加哥 - 奥黑尔国际机场
-    "DFW": "us.616049.xyz",  # 达拉斯 - 沃斯堡国际机场
-    "MIA": "us.616049.xyz",  # 迈阿密国际机场
-    "ATL": "us.616049.xyz",  # 亚特兰大国际机场
+    "SJC": "proxy.us.616049.xyz",  # 圣何塞
+    "LAX": "proxy.us.616049.xyz",  # 洛杉矶
+    "SEA": "proxy.us.616049.xyz",  # 西雅图
+    "JFK": "proxy.us.616049.xyz",  # 纽约 - 肯尼迪国际机场
+    "ORD": "proxy.us.616049.xyz",  # 芝加哥 - 奥黑尔国际机场
+    "DFW": "proxy.us.616049.xyz",  # 达拉斯 - 沃斯堡国际机场
+    "MIA": "proxy.us.616049.xyz",  # 迈阿密国际机场
+    "ATL": "proxy.us.616049.xyz",  # 亚特兰大国际机场
 
     # 日本
-    "NRT": "jp.616049.xyz",  # 东京成田
-    "HND": "jp.616049.xyz",  # 东京羽田
-    "KIX": "jp.616049.xyz",  # 大阪关西国际机场
-    "CTS": "jp.616049.xyz",  # 札幌新千岁机场
-    "FUK": "jp.616049.xyz",  # 福冈机场
-    "NGO": "jp.616049.xyz",  # 名古屋中部国际机场
-    "OKA": "jp.616049.xyz",  # 冲绳那霸机场
+    "NRT": "proxy.jp.616049.xyz",  # 东京成田
+    "HND": "proxy.jp.616049.xyz",  # 东京羽田
+    "KIX": "proxy.jp.616049.xyz",  # 大阪关西国际机场
+    "CTS": "proxy.jp.616049.xyz",  # 札幌新千岁机场
+    "FUK": "proxy.jp.616049.xyz",  # 福冈机场
+    "NGO": "proxy.jp.616049.xyz",  # 名古屋中部国际机场
+    "OKA": "proxy.jp.616049.xyz",  # 冲绳那霸机场
 
     # 香港
-    "HKG": "hk.616049.xyz",  # 香港国际机场
+    "HKG": "proxy.hk.616049.xyz",  # 香港国际机场
 
     # 韩国
-    "ICN": "kr.616049.xyz",  # 仁川国际机场
-    "PUS": "kr.616049.xyz",  # 釜山金海机场
-    "GMP": "kr.616049.xyz",  # 首尔金浦机场
-    "CJU": "kr.616049.xyz",  # 济州机场
-    "TAE": "kr.616049.xyz",  # 大邱机场
+    "ICN": "proxy.kr.616049.xyz",  # 仁川国际机场
+    "PUS": "proxy.kr.616049.xyz",  # 釜山金海机场
+    "GMP": "proxy.kr.616049.xyz",  # 首尔金浦机场
+    "CJU": "proxy.kr.616049.xyz",  # 济州机场
+    "TAE": "proxy.kr.616049.xyz",  # 大邱机场
 
     # 台湾
-    "TPE": "tw.616049.xyz",  # 台北桃园机场
-    "TSA": "tw.616049.xyz",  # 台北松山机场
-    "KHH": "tw.616049.xyz",  # 高雄国际机场
-    "RMQ": "tw.616049.xyz",  # 台中清泉岗机场
+    "TPE": "proxy.tw.616049.xyz",  # 台北桃园机场
+    "TSA": "proxy.tw.616049.xyz",  # 台北松山机场
+    "KHH": "proxy.tw.616049.xyz",  # 高雄国际机场
+    "RMQ": "proxy.tw.616049.xyz",  # 台中清泉岗机场
 
     # 新加坡
-    "SIN": "sg.616049.xyz",   # 樟宜机场
-    
-    # CF优选
-    "CF优选": "cf.616049.xyz",  # CF优选
-    
+    "SIN": "proxy.sg.616049.xyz",   # 樟宜机场
+        
     # Proxy
-    "Proxy": "proxy.616049.xyz"  # Proxy
-    
+    "Proxy": "proxy.616049.xyz"  # Proxy    
 }
 
 # 从 cfip.txt 文件中读取前十个 IP 和标记
