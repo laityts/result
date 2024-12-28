@@ -43,6 +43,7 @@ def remove_file(file_path):
 # 获取IP的colo信息，并将完整数据写入日志文件
 def get_colo(ip_address):
     """获取IP的colo信息并写入日志文件"""
+    # 主 API
     url = f'http://{ip_address}/cdn-cgi/trace'
     
     try:
@@ -62,12 +63,25 @@ def get_colo(ip_address):
                 if line.startswith('colo='):
                     return line.split('=')[1]
         else:
-            print(f"Request failed for IP {ip_address} with status code: {response.status_code}")
+            print(f"主 API 请求失败，IP {ip_address} 状态码: {response.status_code}")
     
     except requests.exceptions.RequestException as e:
-        print(f"An error occurred for IP {ip_address}: {e}")
+        print(f"主 API 请求出错，IP {ip_address}: {e}")
     
-    return "CF优选"
+    # 如果主 API 失败，尝试备用 API
+    backup_url = f'https://ipinfo.io/{ip_address}/json'
+    try:
+        response = requests.get(backup_url)
+        if response.status_code == 200:
+            data = response.json()
+            country = data.get('country', '未知')
+            return f"{country}"
+        else:
+            print(f"备用 API 请求失败，IP {ip_address} 状态码: {response.status_code}")
+    except requests.exceptions.RequestException as e:
+        print(f"备用 API 请求出错，IP {ip_address}: {e}")
+    
+    return "CFV6优选"
 
 # 检查 cfst 文件是否存在
 if not os.path.exists(cfst_path):
