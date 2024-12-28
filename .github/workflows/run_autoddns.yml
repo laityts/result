@@ -6,6 +6,7 @@ on:
       - main  # 仅在推送到 main 分支时触发，可以修改为你想要的分支
     paths:
       - 'cfip.txt'  # 只有 ipv6.txt 文件发生变化时才触发
+      - 'result.csv' 
 
 jobs:
   run-autoddns:
@@ -16,8 +17,6 @@ jobs:
       CLOUDFLARE_API_KEY: ${{ secrets.CLOUDFLARE_API_KEY }}
       CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
       CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
-
-    if: contains(github.event.head_commit.modified, 'cfip.txt')
 
     steps:
     - name: Checkout repository
