@@ -1,5 +1,17 @@
 import os
 import requests
+import logging
+import sys
+
+# 配置日志
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    handlers=[
+        logging.FileHandler("dns_update.log"),
+        logging.StreamHandler()
+    ]
+)
 
 # 从环境变量获取 Cloudflare API 配置信息
 API_KEY = os.getenv("CLOUDFLARE_API_KEY")
@@ -8,8 +20,8 @@ ZONE_ID = os.getenv("CLOUDFLARE_ZONE_ID")
 
 # 确保从环境变量中获取到了这些信息
 if not all([API_KEY, EMAIL, ZONE_ID]):
-    print("缺少 Cloudflare 配置信息，请确保在 GitHub Secrets 中设置了 CLOUDFLARE_API_KEY, CLOUDFLARE_EMAIL 和 CLOUDFLARE_ZONE_ID。")
-    exit(1)
+    logging.error("缺少 Cloudflare 配置信息，请确保在 GitHub Secrets 中设置了 CLOUDFLARE_API_KEY, CLOUDFLARE_EMAIL 和 CLOUDFLARE_ZONE_ID。")
+    sys.exit(1)
 
 # 域名与标记映射关系（扩展机场三字码）
 LOCATION_TO_DOMAIN = {
@@ -74,12 +86,15 @@ LOCATION_TO_DOMAIN = {
     # 新加坡
     "SIN": "sg.616049.xyz",   # 樟宜机场
     "SG": "sg.616049.xyz",  # 新加坡
-        
+    
     # Proxy
-    "Proxy": "proxy.616049.xyz"  # Proxy    
+    "Proxy": "proxy.616049.xyz"  # Proxy
+ 
+    # CF优选
+    "CF优选": "cf.616049.xyz"  # CF优选
 }
 
-# 从 cfip.txt 文件中读取前十个 IP 和标记
+# 从 cfipfd.txt 文件中读取前十个 IP 和标记
 def get_ips_from_file(file_path, limit=10):
     ip_data = []
     try:
@@ -92,60 +107,73 @@ def get_ips_from_file(file_path, limit=10):
                     break
         return ip_data
     except FileNotFoundError:
-        print(f"文件未找到: {file_path}")
+        logging.error(f"文件未找到: {file_path}")
         return []
 
-# 检查是否已有相同记录
-def check_existing_record(domain, ip):
-    url = f"https://api.cloudflare.com/client/v4/zones/{ZONE_ID}/dns_records"
-    headers = {
-        "X-Auth-Email": EMAIL,
-        "X-Auth-Key": API_KEY,
-        "Content-Type": "application/json"
-    }
-    response = requests.get(url, headers=headers)
-    if response.status_code == 200:
+# 删除所有 DNS 记录
+def delete_all_dns_records():
+    try:
+        url = f"https://api.cloudflare.com/client/v4/zones/{ZONE_ID}/dns_records"
+        headers = {
+            "X-Auth-Email": EMAIL,
+            "X-Auth-Key": API_KEY,
+            "Content-Type": "application/json"
+        }
+        response = requests.get(url, headers=headers)
+        response.raise_for_status()
         records = response.json().get("result", [])
-        return any(record["name"] == domain and record["content"] == ip for record in records)
-    print(f"检查记录失败: {response.status_code}, {response.text}")
-    return False
+        logging.info(f"找到 {len(records)} 条 DNS 记录，开始删除...")
+        for record in records:
+            record_id = record["id"]
+            delete_url = f"{url}/{record_id}"
+            delete_response = requests.delete(delete_url, headers=headers)
+            if delete_response.status_code == 200:
+                logging.info(f"已删除记录: {record['name']} -> {record['content']}")
+            else:
+                logging.error(f"删除失败: {record['name']} -> {record['content']}, 错误信息: {delete_response.status_code}, {delete_response.text}")
+    except requests.exceptions.RequestException as e:
+        logging.error(f"请求失败: {e}")
+        sys.exit(1)
 
-# 添加新的 DNS 记录
-def add_dns_record(domain, ip):
+# 批量添加 DNS 记录
+def add_dns_records_bulk(ip_data):
     url = f"https://api.cloudflare.com/client/v4/zones/{ZONE_ID}/dns_records"
-    data = {
-        "type": "A",
-        "name": domain,
-        "content": ip,
-        "ttl": 1,
-        "proxied": False
-    }
     headers = {
         "X-Auth-Email": EMAIL,
         "X-Auth-Key": API_KEY,
         "Content-Type": "application/json"
     }
-    response = requests.post(url, headers=headers, json=data)
-    if response.status_code == 200:
-        print(f"添加成功: {domain} -> {ip}")
-    elif response.status_code == 409:
-        print(f"记录已存在: {domain} -> {ip}")
-    else:
-        print(f"添加失败: {domain} -> {ip}, 错误信息: {response.status_code}, {response.text}")
+    for ip, location in ip_data:
+        domain = LOCATION_TO_DOMAIN.get(location)
+        if domain:
+            data = {
+                "type": "A",
+                "name": domain,
+                "content": ip,
+                "ttl": 1,
+                "proxied": False
+            }
+            try:
+                response = requests.post(url, headers=headers, json=data)
+                if response.status_code == 200:
+                    logging.info(f"添加成功: {domain} -> {ip}")
+                elif response.status_code == 409:
+                    logging.info(f"记录已存在: {domain} -> {ip}")
+                else:
+                    logging.error(f"添加失败: {domain} -> {ip}, 错误信息: {response.status_code}, {response.text}")
+            except requests.exceptions.RequestException as e:
+                logging.error(f"请求失败: {e}")
+        else:
+            logging.warning(f"未找到标记 {location} 对应的域名映射，跳过。")
 
 # 主程序
 if __name__ == "__main__":
+    # 删除所有现有 DNS 记录
+    delete_all_dns_records()
+
+    # 添加新的 DNS 记录
     ip_data = get_ips_from_file("cfipfd.txt")
     if not ip_data:
-        print("未读取到 IP 数据，请检查 cfip.txt 文件格式是否正确。")
+        logging.error("未读取到 IP 数据，请检查 cfipfd.txt 文件格式是否正确。")
     else:
-        for ip, location in ip_data:
-            domain = LOCATION_TO_DOMAIN.get(location)
-            if domain:
-                print(f"为域名 {domain} 添加 IP: {ip}")
-                if not check_existing_record(domain, ip):
-                    add_dns_record(domain, ip)
-                else:
-                    print(f"记录已存在，跳过: {domain} -> {ip}")
-            else:
-                print(f"未找到标记 {location} 对应的域名映射，跳过。")
+        add_dns_records_bulk(ip_data)
