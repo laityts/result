@@ -122,6 +122,8 @@ def delete_dns_records_with_prefix(prefix):
         logging.info(f"找到 {len(records)} 条 DNS 记录，开始删除与 {prefix} 相关的记录...")
         for record in records:
             if record["name"].startswith(prefix):
+            # 打印即将删除的 DNS 记录的详细信息
+                logging.info(f"即将删除记录: 名称={record['name']}, 类型={record['type']}, 内容={record['content']}, TTL={record['ttl']}, 代理={record['proxied']}")
                 record_id = record["id"]
                 delete_url = f"{url}/{record_id}"
                 delete_response = requests.delete(delete_url, headers=headers)
