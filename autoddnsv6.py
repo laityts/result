@@ -107,8 +107,8 @@ def get_ips_from_file(file_path, limit=10):
         logging.error(f"文件未找到: {file_path}")
         return []
 
-# 删除所有 DNS 记录
-def delete_all_dns_records():
+# 删除相同前缀的所有 DNS 记录
+def delete_dns_records_with_prefix(prefix):
     try:
         url = f"https://api.cloudflare.com/client/v4/zones/{ZONE_ID}/dns_records"
         headers = {
@@ -119,15 +119,16 @@ def delete_all_dns_records():
         response = requests.get(url, headers=headers)
         response.raise_for_status()
         records = response.json().get("result", [])
-        logging.info(f"找到 {len(records)} 条 DNS 记录，开始删除...")
+        logging.info(f"找到 {len(records)} 条 DNS 记录，开始删除与 {prefix} 相关的记录...")
         for record in records:
-            record_id = record["id"]
-            delete_url = f"{url}/{record_id}"
-            delete_response = requests.delete(delete_url, headers=headers)
-            if delete_response.status_code == 200:
-                logging.info(f"已删除记录: {record['name']} -> {record['content']}")
-            else:
-                logging.error(f"删除失败: {record['name']} -> {record['content']}, 错误信息: {delete_response.status_code}, {delete_response.text}")
+            if record["name"].startswith(prefix):
+                record_id = record["id"]
+                delete_url = f"{url}/{record_id}"
+                delete_response = requests.delete(delete_url, headers=headers)
+                if delete_response.status_code == 200:
+                    logging.info(f"已删除记录: {record['name']} -> {record['content']}")
+                else:
+                    logging.error(f"删除失败: {record['name']} -> {record['content']}, 错误信息: {delete_response.status_code}, {delete_response.text}")
     except requests.exceptions.RequestException as e:
         logging.error(f"请求失败: {e}")
         sys.exit(1)
@@ -140,9 +141,17 @@ def add_dns_records_bulk(ip_data):
         "X-Auth-Key": API_KEY,
         "Content-Type": "application/json"
     }
+    # 记录已经删除过哪些前缀
+    deleted_prefixes = set()
     for ip, location in ip_data:
         domain = LOCATION_TO_DOMAIN.get(location)
         if domain:
+            # 提取前缀（例如 "usv6.616049.xyz" 的前缀是 "usv6"）
+            prefix = domain.split(".")[0]
+            # 如果该前缀没有被删除过，则删除该前缀的所有 DNS 记录
+            if prefix not in deleted_prefixes:
+                delete_dns_records_with_prefix(prefix)
+                deleted_prefixes.add(prefix)  # 标记该前缀已删除
             data = {
                 "type": "AAAA",  # IPv6 记录类型
                 "name": domain,
@@ -165,9 +174,6 @@ def add_dns_records_bulk(ip_data):
 
 # 主程序
 if __name__ == "__main__":
-    # 删除所有现有 DNS 记录
-    delete_all_dns_records()
-
     # 添加新的 DNS 记录
     ip_data = get_ips_from_file("cfipv6.txt")
     if not ip_data:
