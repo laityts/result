@@ -107,7 +107,7 @@ def get_ips_from_file(file_path, limit=10):
         logging.error(f"文件未找到: {file_path}")
         return []
 
-# 删除相同前缀的所有 DNS 记录
+# 删除相同前缀的所有 DNS 记录（完全匹配）
 def delete_dns_records_with_prefix(prefix):
     try:
         url = f"https://api.cloudflare.com/client/v4/zones/{ZONE_ID}/dns_records"
@@ -119,10 +119,13 @@ def delete_dns_records_with_prefix(prefix):
         response = requests.get(url, headers=headers)
         response.raise_for_status()
         records = response.json().get("result", [])
-        logging.info(f"找到 {len(records)} 条 DNS 记录，开始删除与 {prefix} 相关的记录...")
+        logging.info(f"找到 {len(records)} 条 DNS 记录，开始删除与 {prefix} 完全匹配的记录...")
         for record in records:
-            if record["name"].startswith(prefix):
-            # 打印即将删除的 DNS 记录的详细信息
+            # 提取记录名称的前缀（例如 "proxy.us.616049.xyz" 的前缀是 "proxy"）
+            record_prefix = record["name"].split(".")[0]
+            # 仅删除与给定前缀完全匹配的记录
+            if record_prefix == prefix:
+                # 打印即将删除的 DNS 记录的详细信息
                 logging.info(f"即将删除记录: 名称={record['name']}, 类型={record['type']}, 内容={record['content']}, TTL={record['ttl']}, 代理={record['proxied']}")
                 record_id = record["id"]
                 delete_url = f"{url}/{record_id}"
