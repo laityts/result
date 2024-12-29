@@ -74,6 +74,10 @@ def get_colo(ip_address):
         response = requests.get(backup_url)
         if response.status_code == 200:
             data = response.json()
+            # 将完整的响应数据写入日志文件
+            with open(log_file, mode="a", encoding="utf-8") as log:
+                log.write(f"完整数据来自 {ip_address}:\n")
+                log.write(data + "\n\n")
             country = data.get('country', '未知')
             return f"{country}"
         else:
@@ -126,7 +130,7 @@ remove_file(cfip_file)
 remove_file(log_file)
 
 # 执行 cfst 命令，使用变量传递 cfcolo
-subprocess.run(["./cfst", "-f", "ipv6.txt", "-o", "resultv6.csv", "-httping", "-cfcolo", cfcolo, "-tl", "150", "-tll", "20", "-tp", "443", "-sl", "5", "-dn", "20"], check=True)
+subprocess.run(["./cfst", "-url", "http://speedtest.eytan.us.kg", "-f", "ipv6.txt", "-o", "resultv6.csv", "-httping", "-cfcolo", cfcolo, "-tl", "150", "-tll", "20", "-tp", "443", "-sl", "5", "-dn", "20"], check=True)
 
 # 提取 IP 地址并保存到 cfip.txt
 ip_addresses = []

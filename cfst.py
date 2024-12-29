@@ -43,6 +43,7 @@ def remove_file(file_path):
 # 获取IP的colo信息，并将完整数据写入日志文件
 def get_colo(ip_address):
     """获取IP的colo信息并写入日志文件"""
+    # 主 API
     url = f'http://{ip_address}/cdn-cgi/trace'
     
     try:
@@ -62,10 +63,27 @@ def get_colo(ip_address):
                 if line.startswith('colo='):
                     return line.split('=')[1]
         else:
-            print(f"Request failed for IP {ip_address} with status code: {response.status_code}")
+            print(f"主 API 请求失败，IP {ip_address} 状态码: {response.status_code}")
     
     except requests.exceptions.RequestException as e:
-        print(f"An error occurred for IP {ip_address}: {e}")
+        print(f"主 API 请求出错，IP {ip_address}: {e}")
+    
+    # 如果主 API 失败，尝试备用 API
+    backup_url = f'https://ipinfo.io/{ip_address}/json'
+    try:
+        response = requests.get(backup_url)
+        if response.status_code == 200:
+            data = response.json()
+            # 将完整的响应数据写入日志文件
+            with open(log_file, mode="a", encoding="utf-8") as log:
+                log.write(f"完整数据来自 {ip_address}:\n")
+                log.write(data + "\n\n")
+            country = data.get('country', '未知')
+            return f"{country}"
+        else:
+            print(f"备用 API 请求失败，IP {ip_address} 状态码: {response.status_code}")
+    except requests.exceptions.RequestException as e:
+        print(f"备用 API 请求出错，IP {ip_address}: {e}")
     
     return "CF优选"
 
@@ -112,7 +130,7 @@ remove_file(cfip_file)
 remove_file(log_file)
 
 # 执行 cfst 命令，使用变量传递 cfcolo
-subprocess.run(["./cfst", "-httping", "-cfcolo", cfcolo, "-tl", "200", "-tll", "20", "-tp", "443", "-sl", "5", "-dn", "20"], check=True)
+subprocess.run(["./cfst", "-url", "http://speedtest.eytan.us.kg", "-httping", "-cfcolo", cfcolo, "-tl", "200", "-tll", "20", "-tp", "443", "-sl", "5", "-dn", "20"], check=True)
 
 # 提取 IP 地址并保存到 cfip.txt
 ip_addresses = []
