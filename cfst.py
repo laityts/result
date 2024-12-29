@@ -3,6 +3,7 @@ import subprocess
 import csv
 import sys
 import requests
+import random  # 导入 random 模块用于生成随机端口
 
 # 检查是否已安装 requests
 try:
@@ -129,8 +130,17 @@ remove_file(result_file)
 remove_file(cfip_file)
 remove_file(log_file)
 
-# 执行 cfst 命令，使用变量传递 cfcolo
-subprocess.run(["./cfst", "-url", "http://speedtest.eytan.us.kg", "-httping", "-cfcolo", cfcolo, "-tl", "200", "-tll", "20", "-tp", "443", "-sl", "5", "-dn", "20"], check=True)
+# Cloudflare 支持的标准端口列表
+cf_ports = [
+    80, 8080, 8880, 2052, 2082, 2086, 2095, # HTTP 标准端口
+    443, 2053, 2083, 2087, 2096, 8443,  # HTTPS 标准端口
+]
+
+# 随机选择 Cloudflare 的标准端口
+random_port = random.choice(cf_ports)
+
+# 执行 cfst 命令，使用变量传递 cfcolo 和随机端口
+subprocess.run(["./cfst", "-httping", "-cfcolo", cfcolo, "-tl", "200", "-tll", "20", "-tp", str(random_port), "-sl", "5", "-dn", "20"], check=True)
 
 # 提取 IP 地址并保存到 cfip.txt
 ip_addresses = []
@@ -145,7 +155,7 @@ with open(result_file, mode="r", encoding="utf-8") as csvfile:
 with open(output_txt, mode="w", encoding="utf-8") as txtfile:
     for ip in ip_addresses:
         colo = get_colo(ip)  # 获取当前 IP 的 colo 信息
-        txtfile.write(f"{ip}#{colo}\n")  # 将 IP 和 colo 信息写入文件
+        txtfile.write(f"{ip}:{str(random_port)}#{colo}\n")  # 将 IP 和 colo 信息写入文件
         print(f"IP: {ip}, Colo: {colo}")
 
 print(f"提取的 IP 地址和 colo 信息已保存到 {output_txt}")
