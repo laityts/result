@@ -35,4 +35,3 @@ jobs:
     - name: Run autoddns script
       run: |
         python autoddns.py
-        python append_speed.py

@@ -143,35 +143,38 @@ random_port = random.choice(cf_ports)
 # 执行 cfst 命令，使用变量传递 cfcolo 和随机端口
 subprocess.run(["./cfst", "-httping", "-cfcolo", cfcolo, "-tl", "200", "-tll", "20", "-tp", str(random_port), "-sl", "5", "-dn", "20"], check=True)
 
-# 提取 IP 地址并保存到 cfip.txt
+# 提取 IP 地址和下载速度，并保存到 cfip.txt 和 cfipport.txt
 ip_addresses = []
+download_speeds = []
+
 with open(result_file, mode="r", encoding="utf-8") as csvfile:
     reader = csv.reader(csvfile)
     next(reader)  # 跳过表头
     for row in reader:
-        # 假设 IP 地址在每行的第一列（索引为 0）
+        # 假设 IP 地址在每行的第一列（索引为 0），下载速度在第二列（索引为 1）
         ip_addresses.append(row[0])
+        download_speeds.append(row[1])
         # 如果已经提取了 20 个 IP，则停止提取
         if len(ip_addresses) >= 20:
             break
 
 # 将 IP 地址和 colo 信息写入 cfip.txt
 with open(output_txt, mode="w", encoding="utf-8") as txtfile:
-    for ip in ip_addresses:
+    for ip, speed in zip(ip_addresses, download_speeds):
         colo = get_colo(ip)  # 获取当前 IP 的 colo 信息
         txtfile.write(f"{ip}#{colo}\n")  # 将 IP 和 colo 信息写入文件
         print(f"IP: {ip}, Colo: {colo}")
 
 print(f"提取的 IP 地址和 colo 信息已保存到 {output_txt}")
 
-# 将 IP 地址和 colo 信息写入 cfipport.txt
-with open(output_txt, mode="w", encoding="utf-8") as txtfile:
-    for ip in ip_addresses:
+# 将 IP 地址、端口、colo 信息和下载速度写入 cfipport.txt
+with open(port_txt, mode="w", encoding="utf-8") as txtfile:
+    for ip, speed in zip(ip_addresses, download_speeds):
         colo = get_colo(ip)  # 获取当前 IP 的 colo 信息
-        txtfile.write(f"{ip}:{str(random_port)}#{colo}\n")  # 将 IP 和 colo 信息写入文件
-        print(f"IP: {ip}, Colo: {colo}")
+        txtfile.write(f"{ip}:{str(random_port)}#{colo} | {speed}\n")  # 将 IP、端口、colo 信息和下载速度写入文件
+        print(f"IP: {ip}, Port: {random_port}, Colo: {colo}, Speed: {speed}")
 
-print(f"提取的 IP 地址和 colo 信息已保存到 {port_txt}")
+print(f"提取的 IP 地址、端口、colo 信息和下载速度已保存到 {port_txt}")
 
 # Git 上传步骤
 try:

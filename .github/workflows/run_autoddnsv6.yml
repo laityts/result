@@ -35,4 +35,3 @@ jobs:
     - name: Run autoddnsv6 script
       run: |
         python autoddnsv6.py
-        python append_speedv6.py
