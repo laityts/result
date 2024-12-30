@@ -142,7 +142,7 @@ cf_ports = [
 random_port = random.choice(cf_ports)
 
 # 执行 cfst 命令，使用变量传递 cfcolo 和随机端口
-subprocess.run(["./cfst", "-httping", "-cfcolo", cfcolo, "-tl", "200", "-tll", "20", "-tp", str(random_port), "-sl", "5", "-dn", "20"], check=True)
+subprocess.run(["./cfst", "-httping", "-cfcolo", cfcolo, "-tl", "150", "-tll", "20", "-tp", str(random_port), "-sl", "5", "-dn", "20"], check=True)
 
 # 提取 IP 地址和下载速度，并保存到 cfip.txt 和 cfipport.txt
 ip_addresses = []
@@ -180,7 +180,7 @@ with open(port_txt, mode="w", encoding="utf-8") as txtfile:
     for ip, speed in zip(ip_addresses, download_speeds):
         colo = get_colo(ip)  # 获取当前 IP 的 colo 信息
         emoji = colo_emojis.get(colo, "☁️")  # 获取对应的表情符号，默认为 ☁️
-        txtfile.write(f"{ip}:{str(random_port)}#{emoji}{colo} │ ⚡ {speed}(MB/s)\n")  # 将 IP、端口、colo 信息和下载速度写入文件
+        txtfile.write(f"{ip}:{str(random_port)}#{emoji}{colo}┃⚡ {speed}(MB/s)\n")  # 将 IP、端口、colo 信息和下载速度写入文件
         print(f"IP: {ip}, Port: {random_port}, Colo: {emoji}{colo}, Speed: {speed}")
 
 print(f"提取的 IP 地址、端口、colo 信息和下载速度已保存到 {port_txt}")
@@ -193,7 +193,7 @@ with open(output_cf_txt, mode="w", encoding="utf-8") as cf_file:
             colo = get_colo(ip)  # 获取当前 IP 的 colo 信息
             emoji = colo_emojis.get(colo, "☁️")  # 获取对应的表情符号，默认为 ☁️
             # 写入 IP、端口、colo 信息和下载速度
-            cf_file.write(f"{ip}:{str(random_port)}#{emoji}{colo} │ ⚡ {speed}(MB/s)\n")
+            cf_file.write(f"{ip}:{str(random_port)}#{emoji}{colo}┃⚡ {speed}(MB/s)\n")
             print(f"符合条件的 IP: {ip}, Port: {random_port}, Colo: {emoji}{colo}, Speed: {speed}")
 
 print(f"筛选出的 IP 地址、端口、colo 信息和下载速度已保存到 {output_cf_txt}")
