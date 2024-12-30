@@ -26,6 +26,7 @@ cfip_file = "cfip.txt"
 output_txt = "cfip.txt"
 port_txt = "cfipport.txt"
 log_file = "log.txt"  # 新增日志文件
+output_cf_txt = "cf.txt"# 定义下载速度优选文件路径
 commit_message = "Update result.csv and cfip.txt"
 download_url = "https://github.com/XIU2/CloudflareSpeedTest/releases/download/v2.2.5/CloudflareST_linux_arm64.tar.gz"  # 使用变量存储下载 URL
 
@@ -133,7 +134,6 @@ remove_file(log_file)
 
 # Cloudflare 支持的标准端口列表
 cf_ports = [
-    80, 8080, 8880, 2052, 2082, 2086, 2095, # HTTP 标准端口
     443, 2053, 2083, 2087, 2096, 8443,  # HTTPS 标准端口
 ]
 
@@ -149,11 +149,18 @@ download_speeds = []
 
 with open(result_file, mode="r", encoding="utf-8") as csvfile:
     reader = csv.reader(csvfile)
-    next(reader)  # 跳过表头
+    header = next(reader)  # 读取表头
+    # 确认下载速度所在的列
+    if "下载速度 (MB/s)" in header:  # 假设表头中有 "下载速度 (MB/s)"
+        speed_index = header.index("下载速度 (MB/s)")
+    else:
+        print("无法找到下载速度列，请检查 CSV 文件表头。")
+        sys.exit(1)
+    
+    # 提取 IP 地址和下载速度
     for row in reader:
-        # 假设 IP 地址在每行的第一列（索引为 0），下载速度在第二列（索引为 1）
-        ip_addresses.append(row[0])
-        download_speeds.append(row[1])
+        ip_addresses.append(row[0])  # 假设 IP 地址在第一列
+        download_speeds.append(row[speed_index])  # 使用 speed_index 获取下载速度
         # 如果已经提取了 20 个 IP，则停止提取
         if len(ip_addresses) >= 20:
             break
@@ -171,10 +178,22 @@ print(f"提取的 IP 地址和 colo 信息已保存到 {output_txt}")
 with open(port_txt, mode="w", encoding="utf-8") as txtfile:
     for ip, speed in zip(ip_addresses, download_speeds):
         colo = get_colo(ip)  # 获取当前 IP 的 colo 信息
-        txtfile.write(f"{ip}:{str(random_port)}#{colo} | {speed}\n")  # 将 IP、端口、colo 信息和下载速度写入文件
+        txtfile.write(f"{ip}:{str(random_port)}#{colo}|{speed}(MB/s)\n")  # 将 IP、端口、colo 信息和下载速度写入文件
         print(f"IP: {ip}, Port: {random_port}, Colo: {colo}, Speed: {speed}")
 
 print(f"提取的 IP 地址、端口、colo 信息和下载速度已保存到 {port_txt}")
+
+# 筛选下载速度大于 10 MB/s 的 IP，并写入 cf.txt
+with open(output_cf_txt, mode="w", encoding="utf-8") as cf_file:
+    for ip, speed in zip(ip_addresses, download_speeds):
+        # 将下载速度从字符串转换为浮点数进行比较
+        if float(speed) > 10:
+            colo = get_colo(ip)  # 获取当前 IP 的 colo 信息
+            # 写入 IP、端口、colo 信息和下载速度
+            cf_file.write(f"{ip}:{str(random_port)}#{colo}|{speed}(MB/s)\n")
+            print(f"符合条件的 IP: {ip}, Port: {random_port}, Colo: {colo}, Speed: {speed}")
+
+print(f"筛选出的 IP 地址、端口、colo 信息和下载速度已保存到 {output_cf_txt}")
 
 # Git 上传步骤
 try:
