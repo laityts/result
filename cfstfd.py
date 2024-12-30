@@ -3,6 +3,7 @@ import subprocess
 import csv
 import sys
 import requests
+import json  # 导入 json 模块
 import random  # 导入 random 模块用于生成随机端口
 from colo_emojis import colo_emojis
 
@@ -20,14 +21,21 @@ script_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
 # 切换到当前脚本所在的目录
 os.chdir(script_dir)
 
+# 创建所需的目录
+os.makedirs("csv", exist_ok=True)
+os.makedirs("log", exist_ok=True)
+os.makedirs("port", exist_ok=True)
+os.makedirs("cfip", exist_ok=True)
+os.makedirs("cf", exist_ok=True)
+
 # 定义文件路径和变量
 cfst_path = "cfst"
-result_file = "resultfd.csv"
-cfip_file = "cfipfd.txt"
-output_txt = "cfipfd.txt"
-port_txt = "cfipfdport.txt"
-log_file = "logfd.txt"  # 新增日志文件
-output_cf_txt = "cffd.txt"# 定义下载速度优选文件路径
+result_file = "csv/resultfd.csv"
+cfip_file = "cfip/cfipfd.txt"
+output_txt = "cfip/cfipfd.txt"
+port_txt = "port/cfipfdport.txt"
+log_file = "log/logfd.txt"  # 新增日志文件
+output_cf_txt = "cf/cffd.txt"# 定义下载速度优选文件路径
 commit_message = "Update result.csv and cfipfd.txt"
 download_url = "https://github.com/XIU2/CloudflareSpeedTest/releases/download/v2.2.5/CloudflareST_linux_arm64.tar.gz"  # 使用变量存储下载 URL
 
@@ -122,7 +130,7 @@ cf_ports = [
 random_port = random.choice(cf_ports)
 
 # 执行 cfst 命令，使用变量传递 cfcolo
-subprocess.run(["./cfst", "-f", "proxy.txt", "-o", "resultfd.csv", "-httping", "-tl", "300", "-tll", "20", "-tp", "443", "-dn", "20"], check=True)
+subprocess.run(["./cfst", "-f", "proxy.txt", "-o", "csv/resultfd.csv", "-httping", "-tl", "300", "-tll", "20", "-tp", "443", "-dn", "20"], check=True)
 
 # 提取 IP 地址和下载速度，并保存到 cfipfd.txt 和 cfipfdport.txt
 ip_addresses = []
@@ -160,7 +168,7 @@ with open(port_txt, mode="w", encoding="utf-8") as txtfile:
     for ip, speed in zip(ip_addresses, download_speeds):
         colo = get_colo(ip)  # 获取当前 IP 的 colo 信息
         emoji = colo_emojis.get(colo, "☁️")  # 获取对应的表情符号，默认为 ☁️
-        txtfile.write(f"{ip}:{str(random_port)}#{emoji}{colo}┃⚡ {speed}(MB/s)\n")  # 将 IP、端口、colo 信息和下载速度写入文件
+        txtfile.write(f"{ip}:{str(random_port)}#{emoji}{colo}┃⚡{speed}(MB/s)\n")  # 将 IP、端口、colo 信息和下载速度写入文件
         print(f"IP: {ip}, Port: {random_port}, Colo: {emoji}{colo}, Speed: {speed}")
 
 print(f"提取的 IP 地址、端口、colo 信息和下载速度已保存到 {port_txt}")

@@ -21,14 +21,21 @@ script_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
 # 切换到当前脚本所在的目录
 os.chdir(script_dir)
 
+# 创建所需的目录
+os.makedirs("csv", exist_ok=True)
+os.makedirs("log", exist_ok=True)
+os.makedirs("port", exist_ok=True)
+os.makedirs("cfip", exist_ok=True)
+os.makedirs("cf", exist_ok=True)
+
 # 定义文件路径和变量
 cfst_path = "cfst"
-result_file = "resultv6.csv"
-cfip_file = "cfipv6.txt"
-output_txt = "cfipv6.txt"
-port_txt = "cfipv6port.txt"
-log_file = "logv6.txt"  # 新增日志文件
-output_cf_txt = "cfv6.txt"# 定义下载速度优选文件路径
+result_file = "csv/resultv6.csv"
+cfip_file = "cfip/cfipv6.txt"
+output_txt = "cfip/cfipv6.txt"
+port_txt = "port/cfipv6port.txt"
+log_file = "log/logv6.txt"  # 新增日志文件
+output_cf_txt = "cf/cfv6.txt"# 定义下载速度优选文件路径
 commit_message = "Update resultv6.csv and cfipv6.txt"
 download_url = "https://github.com/XIU2/CloudflareSpeedTest/releases/download/v2.2.5/CloudflareST_linux_arm64.tar.gz"  # 使用变量存储下载 URL
 
@@ -144,7 +151,7 @@ cf_ports = [
 random_port = random.choice(cf_ports)
 
 # 执行 cfst 命令，使用变量传递 cfcolo
-subprocess.run(["./cfst", "-f", "ipv6.txt", "-o", "resultv6.csv", "-httping", "-cfcolo", cfcolo, "-tl", "150", "-tll", "20", "-tp", "443", "-sl", "5", "-dn", "20"], check=True)
+subprocess.run(["./cfst", "-f", "ipv6.txt", "-o", "csv/resultv6.csv", "-httping", "-cfcolo", cfcolo, "-tl", "150", "-tll", "20", "-tp", "443", "-sl", "5", "-dn", "20"], check=True)
 
 # 提取 IP 地址和下载速度，并保存到 cfipv6.txt 和 cfipv6port.txt
 ip_addresses = []
