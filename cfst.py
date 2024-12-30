@@ -178,8 +178,8 @@ with open(result_file, mode="r", encoding="utf-8") as csvfile:
 with open(output_txt, mode="w", encoding="utf-8") as txtfile:
     for ip, speed in zip(ip_addresses, download_speeds):
         colo = get_colo(ip)  # 获取当前 IP 的 colo 信息
-        txtfile.write(f"{ip}#{colo}\n")  # 将 IP 和 colo 信息写入文件
-        print(f"IP: {ip}, Colo: {colo}")
+        txtfile.write(f"[{ip}]#{colo}\n")  # 将 IP 和 colo 信息写入文件
+        print(f"IP: [{ip}], Colo: {colo}")
 
 print(f"提取的 IP 地址和 colo 信息已保存到 {output_txt}")
 
@@ -188,8 +188,8 @@ with open(port_txt, mode="w", encoding="utf-8") as txtfile:
     for ip, speed in zip(ip_addresses, download_speeds):
         colo = get_colo(ip)  # 获取当前 IP 的 colo 信息
         emoji = colo_emojis.get(colo, "☁️")  # 获取对应的表情符号，默认为 ☁️
-        txtfile.write(f"{ip}:{str(random_port)}#{emoji}{colo}┃⚡{speed}(MB/s)\n")  # 将 IP、端口、colo 信息和下载速度写入文件
-        print(f"IP: {ip}, Port: {random_port}, Colo: {emoji}{colo}, Speed: {speed}")
+        txtfile.write(f"[{ip}]:{str(random_port)}#{emoji}{colo}┃⚡{speed}(MB/s)\n")  # 将 IP、端口、colo 信息和下载速度写入文件
+        print(f"IP: [{ip}], Port: {random_port}, Colo: {emoji}{colo}, Speed: {speed}")
 
 print(f"提取的 IP 地址、端口、colo 信息和下载速度已保存到 {port_txt}")
 
@@ -201,8 +201,8 @@ with open(output_cf_txt, mode="a", encoding="utf-8") as cf_file:  # 使用 "a" �
             colo = get_colo(ip)  # 获取当前 IP 的 colo 信息
             emoji = colo_emojis.get(colo, "☁️")  # 获取对应的表情符号，默认为 ☁️
             # 写入 IP、端口、colo 信息和下载速度
-            cf_file.write(f"{ip}:{str(random_port)}#{emoji}{colo}┃⚡{speed}(MB/s)\n")
-            print(f"符合条件的 IP: {ip}, Port: {random_port}, Colo: {emoji}{colo}, Speed: {speed}")
+            cf_file.write(f"[{ip}]:{str(random_port)}#{emoji}{colo}┃⚡{speed}(MB/s)\n")
+            print(f"符合条件的 IP: [{ip}], Port: {random_port}, Colo: {emoji}{colo}, Speed: {speed}")
 
 print(f"筛选出的 IP 地址、端口、colo 信息和下载速度已追加到 {output_cf_txt}")
 
