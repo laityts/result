@@ -35,7 +35,7 @@ cfip_file = "cfip/cfip.txt"
 output_txt = "cfip/cfip.txt"
 port_txt = "port/cfipport.txt"  # 更新路径
 log_file = "log/log.txt"  # 更新路径
-output_cf_txt = "cf/cf.txt"  # 定义下载速度优选文件路径
+output_cf_txt = "speed/cf.txt"  # 定义下载速度优选文件路径
 commit_message = "Update result.csv and cfip.txt"
 download_url = "https://github.com/XIU2/CloudflareSpeedTest/releases/download/v2.2.5/CloudflareST_linux_arm64.tar.gz"  # 使用变量存储下载 URL
 
@@ -193,8 +193,8 @@ with open(port_txt, mode="w", encoding="utf-8") as txtfile:
 
 print(f"提取的 IP 地址、端口、colo 信息和下载速度已保存到 {port_txt}")
 
-# 筛选下载速度大于 10 MB/s 的 IP，并写入 cf.txt
-with open(output_cf_txt, mode="w", encoding="utf-8") as cf_file:
+# 筛选下载速度大于 10 MB/s 的 IP，并追加写入 cf.txt
+with open(output_cf_txt, mode="a", encoding="utf-8") as cf_file:  # 使用 "a" 模式进行追加
     for ip, speed in zip(ip_addresses, download_speeds):
         # 将下载速度从字符串转换为浮点数进行比较
         if float(speed) > 10:
@@ -204,7 +204,7 @@ with open(output_cf_txt, mode="w", encoding="utf-8") as cf_file:
             cf_file.write(f"{ip}:{str(random_port)}#{emoji}{colo}┃⚡{speed}(MB/s)\n")
             print(f"符合条件的 IP: {ip}, Port: {random_port}, Colo: {emoji}{colo}, Speed: {speed}")
 
-print(f"筛选出的 IP 地址、端口、colo 信息和下载速度已保存到 {output_cf_txt}")
+print(f"筛选出的 IP 地址、端口、colo 信息和下载速度已追加到 {output_cf_txt}")
 
 # Git 上传步骤
 try:

@@ -35,7 +35,7 @@ cfip_file = "cfip/cfipv6.txt"
 output_txt = "cfip/cfipv6.txt"
 port_txt = "port/cfipv6port.txt"
 log_file = "log/logv6.txt"  # 新增日志文件
-output_cf_txt = "cf/cfv6.txt"# 定义下载速度优选文件路径
+output_cf_txt = "speed/cfv6.txt"# 定义下载速度优选文件路径
 commit_message = "Update resultv6.csv and cfipv6.txt"
 download_url = "https://github.com/XIU2/CloudflareSpeedTest/releases/download/v2.2.5/CloudflareST_linux_arm64.tar.gz"  # 使用变量存储下载 URL
 
@@ -195,7 +195,7 @@ with open(port_txt, mode="w", encoding="utf-8") as txtfile:
 print(f"提取的 IP 地址、端口、colo 信息和下载速度已保存到 {port_txt}")
 
 # 筛选下载速度大于 10 MB/s 的 IP，并写入 cf.txt
-with open(output_cf_txt, mode="w", encoding="utf-8") as cf_file:
+with open(output_cf_txt, mode="a", encoding="utf-8") as cf_file:
     for ip, speed in zip(ip_addresses, download_speeds):
         # 将下载速度从字符串转换为浮点数进行比较
         if float(speed) > 10:
