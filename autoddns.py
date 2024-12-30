@@ -180,7 +180,7 @@ def add_dns_records_bulk(ip_data):
 # 主程序
 if __name__ == "__main__":
     # 添加新的 DNS 记录
-    ip_data = get_ips_from_file("cfip.txt")
+    ip_data = get_ips_from_file("cfip/cfip.txt")
     if not ip_data:
         logging.error("未读取到 IP 数据，请检查 cfip.txt 文件格式是否正确。")
     else:

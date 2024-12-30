@@ -5,8 +5,8 @@ on:
     branches:
       - main  # 仅在推送到 main 分支时触发，可以修改为你想要的分支
     paths:
-      - 'cfip.txt'  # 只有 ipv6.txt 文件发生变化时才触发
-      - 'result.csv' 
+      - 'cfip/cfip.txt'  # 只有 ipv6.txt 文件发生变化时才触发
+      - 'csv/result.csv' 
 
 jobs:
   run-autoddns:

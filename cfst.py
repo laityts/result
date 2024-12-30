@@ -20,14 +20,21 @@ script_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
 # 切换到当前脚本所在的目录
 os.chdir(script_dir)
 
+# 创建所需的目录
+os.makedirs("csv", exist_ok=True)
+os.makedirs("log", exist_ok=True)
+os.makedirs("port", exist_ok=True)
+os.makedirs("cfip", exist_ok=True)
+os.makedirs("cf", exist_ok=True)
+
 # 定义文件路径和变量
 cfst_path = "cfst"
-result_file = "result.csv"
-cfip_file = "cfip.txt"
-output_txt = "cfip.txt"
-port_txt = "cfipport.txt"
-log_file = "log.txt"  # 新增日志文件
-output_cf_txt = "cf.txt"  # 定义下载速度优选文件路径
+result_file = "csv/result.csv"  # 更新路径
+cfip_file = "cfip/cfip.txt"
+output_txt = "cfip/cfip.txt"
+port_txt = "port/cfipport.txt"  # 更新路径
+log_file = "log/log.txt"  # 更新路径
+output_cf_txt = "cf/cf.txt"  # 定义下载速度优选文件路径
 commit_message = "Update result.csv and cfip.txt"
 download_url = "https://github.com/XIU2/CloudflareSpeedTest/releases/download/v2.2.5/CloudflareST_linux_arm64.tar.gz"  # 使用变量存储下载 URL
 
@@ -81,7 +88,7 @@ def get_colo(ip_address):
             # 将完整的响应数据写入日志文件
             with open(log_file, mode="a", encoding="utf-8") as log:
                 log.write(f"完整数据来自 {ip_address}:\n")
-                log.write(data + "\n\n")
+                log.write(json.dumps(data, indent=4) + "\n\n")  # 将字典转换为字符串
             country = data.get('country', '未知')
             return f"{country}"
         else:
@@ -142,7 +149,7 @@ cf_ports = [
 random_port = random.choice(cf_ports)
 
 # 执行 cfst 命令，使用变量传递 cfcolo 和随机端口
-subprocess.run(["./cfst", "-httping", "-cfcolo", cfcolo, "-tl", "150", "-tll", "20", "-tp", str(random_port), "-sl", "5", "-dn", "20"], check=True)
+subprocess.run(["./cfst", "-o", "csv/result.csv", "-httping", "-cfcolo", cfcolo, "-tl", "150", "-tll", "20", "-tp", str(random_port), "-sl", "5", "-dn", "20"], check=True)
 
 # 提取 IP 地址和下载速度，并保存到 cfip.txt 和 cfipport.txt
 ip_addresses = []
