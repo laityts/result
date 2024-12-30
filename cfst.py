@@ -4,6 +4,7 @@ import csv
 import sys
 import requests
 import random  # 导入 random 模块用于生成随机端口
+from colo_emojis import colo_emojis
 
 # 检查是否已安装 requests
 try:
@@ -26,7 +27,7 @@ cfip_file = "cfip.txt"
 output_txt = "cfip.txt"
 port_txt = "cfipport.txt"
 log_file = "log.txt"  # 新增日志文件
-output_cf_txt = "cf.txt"# 定义下载速度优选文件路径
+output_cf_txt = "cf.txt"  # 定义下载速度优选文件路径
 commit_message = "Update result.csv and cfip.txt"
 download_url = "https://github.com/XIU2/CloudflareSpeedTest/releases/download/v2.2.5/CloudflareST_linux_arm64.tar.gz"  # 使用变量存储下载 URL
 
@@ -178,8 +179,9 @@ print(f"提取的 IP 地址和 colo 信息已保存到 {output_txt}")
 with open(port_txt, mode="w", encoding="utf-8") as txtfile:
     for ip, speed in zip(ip_addresses, download_speeds):
         colo = get_colo(ip)  # 获取当前 IP 的 colo 信息
-        txtfile.write(f"{ip}:{str(random_port)}#{colo}|{speed}(MB/s)\n")  # 将 IP、端口、colo 信息和下载速度写入文件
-        print(f"IP: {ip}, Port: {random_port}, Colo: {colo}, Speed: {speed}")
+        emoji = colo_emojis.get(colo, "☁️")  # 获取对应的表情符号，默认为 ☁️
+        txtfile.write(f"{ip}:{str(random_port)}#{emoji}{colo} ⚡ {speed}(MB/s)\n")  # 将 IP、端口、colo 信息和下载速度写入文件
+        print(f"IP: {ip}, Port: {random_port}, Colo: {emoji}{colo}, Speed: {speed}")
 
 print(f"提取的 IP 地址、端口、colo 信息和下载速度已保存到 {port_txt}")
 
@@ -189,9 +191,10 @@ with open(output_cf_txt, mode="w", encoding="utf-8") as cf_file:
         # 将下载速度从字符串转换为浮点数进行比较
         if float(speed) > 10:
             colo = get_colo(ip)  # 获取当前 IP 的 colo 信息
+            emoji = colo_emojis.get(colo, "☁️")  # 获取对应的表情符号，默认为 ☁️
             # 写入 IP、端口、colo 信息和下载速度
-            cf_file.write(f"{ip}:{str(random_port)}#{colo}|{speed}(MB/s)\n")
-            print(f"符合条件的 IP: {ip}, Port: {random_port}, Colo: {colo}, Speed: {speed}")
+            cf_file.write(f"{ip}:{str(random_port)}#{emoji}{colo} ⚡ {speed}(MB/s)\n")
+            print(f"符合条件的 IP: {ip}, Port: {random_port}, Colo: {emoji}{colo}, Speed: {speed}")
 
 print(f"筛选出的 IP 地址、端口、colo 信息和下载速度已保存到 {output_cf_txt}")
 
