@@ -130,7 +130,7 @@ cf_ports = [
 random_port = random.choice(cf_ports)
 
 # 执行 cfst 命令，使用变量传递 cfcolo
-subprocess.run(["./cfst", "-f", "proxy.txt", "-o", "csv/resultfd.csv", "-cfcolo", cfcolo, "-httping", "-tl", "300", "-tll", "20", "-tp", str(random_port), "-dn", "100"], check=True)
+subprocess.run(["./cfst", "-f", "proxy.txt", "-o", "csv/resultfd.csv", "-cfcolo", cfcolo, "-httping", "-tl", "300", "-tll", "20", "-tp", "443", "-dn", "100"], check=True)
 
 # 提取 IP 地址和下载速度，并保存到 cfipfd.txt 和 cfipfdport.txt
 ip_addresses = []

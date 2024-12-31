@@ -65,7 +65,7 @@ LOCATION_TO_DOMAIN = {
 }
 
 # 从 cfipfd.txt 文件中读取前二十个 IP 和标记
-def get_ips_from_file(file_path, limit=20):
+def get_ips_from_file(file_path, limit=100):
     ip_data = []
     try:
         with open(file_path, "r") as file:
