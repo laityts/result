@@ -40,7 +40,7 @@ commit_message = "Update result.csv and cfipfd.txt"
 download_url = "https://github.com/XIU2/CloudflareSpeedTest/releases/download/v2.2.5/CloudflareST_linux_arm64.tar.gz"  # 使用变量存储下载 URL
 
 # 定义 cfcolo 变量（目标区域）
-cfcolo = "HKG,SJC,LAX,SIN,ICN,NRT"  # 示例区域，您可以根据需要修改此变量
+cfcolo = "HKG,ICN,LAX,SJC,ORD,NRT,HND,FRA,SIN,LHR,TPE"  # 示例区域，您可以根据需要修改此变量
 
 # 获取下载文件的文件名
 downloaded_file = download_url.split("/")[-1]
@@ -130,7 +130,7 @@ cf_ports = [
 random_port = random.choice(cf_ports)
 
 # 执行 cfst 命令，使用变量传递 cfcolo
-subprocess.run(["./cfst", "-f", "proxy.txt", "-o", "csv/resultfd.csv", "-httping", "-tl", "300", "-tll", "20", "-tp", str(random_port), "-dn", "20"], check=True)
+subprocess.run(["./cfst", "-f", "proxy.txt", "-o", "csv/resultfd.csv", "-cfcolo", cfcolo, "-httping", "-tl", "300", "-tll", "20", "-tp", str(random_port), "-dn", "100"], check=True)
 
 # 提取 IP 地址和下载速度，并保存到 cfipfd.txt 和 cfipfdport.txt
 ip_addresses = []
@@ -150,16 +150,32 @@ with open(result_file, mode="r", encoding="utf-8") as csvfile:
     for row in reader:
         ip_addresses.append(row[0])  # 假设 IP 地址在第一列
         download_speeds.append(row[speed_index])  # 使用 speed_index 获取下载速度
-        # 如果已经提取了 20 个 IP，则停止提取
-        if len(ip_addresses) >= 20:
+        # 如果已经提取了 100 个 IP，则停止提取
+        if len(ip_addresses) >=  100:
             break
+
+# 用于跟踪每个 colo 的 IP 数量
+colo_counter = {}
 
 # 将 IP 地址和 colo 信息写入 cfipfd.txt
 with open(output_txt, mode="w", encoding="utf-8") as txtfile:
     for ip, speed in zip(ip_addresses, download_speeds):
         colo = get_colo(ip)  # 获取当前 IP 的 colo 信息
+        
+        # 如果 colo 不在计数器字典中，初始化计数器为 0
+        if colo not in colo_counter:
+            colo_counter[colo] = 0
+        
+        # 如果该 colo 的 IP 数量已经达到 5 个，跳过该 IP
+        if colo_counter[colo] >= 5:
+            continue
+        
+        # 写入 IP 和 colo 信息到文件
         txtfile.write(f"{ip}#{colo}\n")  # 将 IP 和 colo 信息写入文件
         print(f"IP: {ip}, Colo: {colo}")
+        
+        # 增加该 colo 的 IP 计数器
+        colo_counter[colo] += 1
 
 print(f"提取的 IP 地址和 colo 信息已保存到 {output_txt}")
 
@@ -167,9 +183,21 @@ print(f"提取的 IP 地址和 colo 信息已保存到 {output_txt}")
 with open(port_txt, mode="w", encoding="utf-8") as txtfile:
     for ip, speed in zip(ip_addresses, download_speeds):
         colo = get_colo(ip)  # 获取当前 IP 的 colo 信息
+        
+        # 如果 colo 不在计数器字典中，初始化计数器为 0
+        if colo not in colo_counter:
+            colo_counter[colo] = 0
+        
+        # 如果该 colo 的 IP 数量已经达到 5 个，跳过该 IP
+        if colo_counter[colo] >= 5:
+            continue
+        
         emoji = colo_emojis.get(colo, "☁️")  # 获取对应的表情符号，默认为 ☁️
         txtfile.write(f"{ip}:{str(random_port)}#{emoji}{colo}┃⚡{speed}(MB/s)\n")  # 将 IP、端口、colo 信息和下载速度写入文件
         print(f"IP: {ip}, Port: {random_port}, Colo: {emoji}{colo}, Speed: {speed}")
+        
+        # 增加该 colo 的 IP 计数器
+        colo_counter[colo] += 1
 
 print(f"提取的 IP 地址、端口、colo 信息和下载速度已保存到 {port_txt}")
 

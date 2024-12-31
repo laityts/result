@@ -32,36 +32,17 @@ LOCATION_TO_DOMAIN = {
     "SEA": "proxy.us.616049.xyz",  # 西雅图
     "JFK": "proxy.us.616049.xyz",  # 纽约 - 肯尼迪国际机场
     "ORD": "proxy.us.616049.xyz",  # 芝加哥 - 奥黑尔国际机场
-    "DFW": "proxy.us.616049.xyz",  # 达拉斯 - 沃斯堡国际机场
-    "MIA": "proxy.us.616049.xyz",  # 迈阿密国际机场
-    "ATL": "proxy.us.616049.xyz",  # 亚特兰大国际机场
-    "US": "proxy.us.616049.xyz",  # 美国
 
     # 德国
-    "TXL": "proxy.de.616049.xyz",  # 柏林泰格尔机场
-    "SXF": "proxy.de.616049.xyz",  # 柏林舍内费尔德机场
-    "BER": "proxy.de.616049.xyz",  # 柏林勃兰登堡机场
-    "MUC": "proxy.de.616049.xyz",  # 慕尼黑机场
-    "FRA": "proxy.de.616049.xyz",  # 法兰克福机场
-    "HAM": "proxy.de.616049.xyz",  # 汉堡机场
-    "CGN": "proxy.de.616049.xyz",  # 科隆/波恩机场
-    "STR": "proxy.de.616049.xyz",  # 斯图加特机场
-    "DUS": "proxy.de.616049.xyz",  # 杜塞尔多夫机场
-    "LEJ": "proxy.de.616049.xyz",  # 莱比锡/哈雷机场
-    "NUE": "proxy.de.616049.xyz",  # 纽伦堡机场
-    "HAJ": "proxy.de.616049.xyz",  # 汉诺威机场
-    "BRE": "proxy.de.616049.xyz",  # 不来梅机场
-    "DRS": "proxy.de.616049.xyz",  # 德累斯顿机场
     "DE": "proxy.de.616049.xyz",  # 德国
+
+    # 英国
+    "LHR": "proxy.uk.616049.xyz",  # 伦敦
+    "UK": "proxy.uk.616049.xyz",  # 英国
     
     # 日本
     "NRT": "proxy.jp.616049.xyz",  # 东京成田
     "HND": "proxy.jp.616049.xyz",  # 东京羽田
-    "KIX": "proxy.jp.616049.xyz",  # 大阪关西国际机场
-    "CTS": "proxy.jp.616049.xyz",  # 札幌新千岁机场
-    "FUK": "proxy.jp.616049.xyz",  # 福冈机场
-    "NGO": "proxy.jp.616049.xyz",  # 名古屋中部国际机场
-    "OKA": "proxy.jp.616049.xyz",  # 冲绳那霸机场
     "JP": "proxy.jp.616049.xyz",  # 日本
 
     # 香港
@@ -70,17 +51,9 @@ LOCATION_TO_DOMAIN = {
 
     # 韩国
     "ICN": "proxy.kr.616049.xyz",  # 仁川国际机场
-    "PUS": "proxy.kr.616049.xyz",  # 釜山金海机场
-    "GMP": "proxy.kr.616049.xyz",  # 首尔金浦机场
-    "CJU": "proxy.kr.616049.xyz",  # 济州机场
-    "TAE": "proxy.kr.616049.xyz",  # 大邱机场
-    "KR": "proxy.kr.616049.xyz",  # 韩国
 
     # 台湾
     "TPE": "proxy.tw.616049.xyz",  # 台北桃园机场
-    "TSA": "proxy.tw.616049.xyz",  # 台北松山机场
-    "KHH": "proxy.tw.616049.xyz",  # 高雄国际机场
-    "RMQ": "proxy.tw.616049.xyz",  # 台中清泉岗机场
     "TW": "proxy.tw.616049.xyz",  # 台湾
 
     # 新加坡
@@ -107,7 +80,7 @@ def get_ips_from_file(file_path, limit=20):
         logging.error(f"文件未找到: {file_path}")
         return []
 
-# 删除相同前缀的所有 DNS 记录（完全匹配）
+# 删除相同前缀的所有 DNS 记录，但保留最后一条
 def delete_dns_records_with_prefix(prefix):
     try:
         url = f"https://api.cloudflare.com/client/v4/zones/{ZONE_ID}/dns_records"
@@ -119,14 +92,14 @@ def delete_dns_records_with_prefix(prefix):
         response = requests.get(url, headers=headers)
         response.raise_for_status()
         records = response.json().get("result", [])
-        logging.info(f"找到 {len(records)} 条 DNS 记录，开始删除与 {prefix} 完全匹配的记录...")
-        for record in records:
-            # 提取记录名称的前缀（例如 "proxy.us.616049.xyz" 的前缀是 "proxy"）
-            record_prefix = record["name"].split(".")[0]
-            # 仅删除与给定前缀完全匹配的记录
-            if record_prefix == prefix:
-                # 打印即将删除的 DNS 记录的详细信息
-                logging.info(f"即将删除记录: 名称={record['name']}, 类型={record['type']}, 内容={record['content']}, TTL={record['ttl']}, 代理={record['proxied']}")
+        logging.info(f"找到 {len(records)} 条 DNS 记录，开始删除与 {prefix} 完全匹配的记录（保留最后一条）...")
+        
+        # 过滤出与给定前缀完全匹配的记录
+        matching_records = [record for record in records if record["name"].split(".")[0] == prefix]
+        
+        # 如果匹配的记录数量大于 1，则删除除最后一条之外的所有记录
+        if len(matching_records) > 1:
+            for record in matching_records[:-1]:  # 保留最后一条，删除其他
                 record_id = record["id"]
                 delete_url = f"{url}/{record_id}"
                 delete_response = requests.delete(delete_url, headers=headers)
@@ -134,6 +107,8 @@ def delete_dns_records_with_prefix(prefix):
                     logging.info(f"已删除记录: {record['name']} -> {record['content']}")
                 else:
                     logging.error(f"删除失败: {record['name']} -> {record['content']}, 错误信息: {delete_response.status_code}, {delete_response.text}")
+        else:
+            logging.info(f"没有需要删除的记录，{prefix} 前缀的记录数量为 {len(matching_records)}")
     except requests.exceptions.RequestException as e:
         logging.error(f"请求失败: {e}")
         sys.exit(1)
