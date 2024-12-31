@@ -32,8 +32,10 @@ LOCATION_TO_DOMAIN = {
     "SEA": "proxy.us.616049.xyz",  # 西雅图
     "JFK": "proxy.us.616049.xyz",  # 纽约 - 肯尼迪国际机场
     "ORD": "proxy.us.616049.xyz",  # 芝加哥 - 奥黑尔国际机场
+    "US": "proxy.us.616049.xyz",  # 美国
 
     # 德国
+    "FRA": "proxy.de.616049.xyz",  # 法兰克福 
     "DE": "proxy.de.616049.xyz",  # 德国
 
     # 英国
@@ -51,9 +53,11 @@ LOCATION_TO_DOMAIN = {
 
     # 韩国
     "ICN": "proxy.kr.616049.xyz",  # 仁川国际机场
+    "KR": "proxy.kr.616049.xyz",  # 韩国
 
     # 台湾
     "TPE": "proxy.tw.616049.xyz",  # 台北桃园机场
+    "KHH": "proxy.tw.616049.xyz",  # 台湾高雄
     "TW": "proxy.tw.616049.xyz",  # 台湾
 
     # 新加坡

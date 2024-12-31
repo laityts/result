@@ -40,7 +40,7 @@ commit_message = "Update result.csv and cfip.txt"
 download_url = "https://github.com/XIU2/CloudflareSpeedTest/releases/download/v2.2.5/CloudflareST_linux_arm64.tar.gz"  # 使用变量存储下载 URL
 
 # 定义 cfcolo 变量（目标区域）
-cfcolo = "HKG,SJC,LAX,SIN,ICN,NRT"  # 示例区域，您可以根据需要修改此变量"-cfcolo", cfcolo
+cfcolo = "HKG,ICN,LAX,SJC,ORD,NRT,HND,FRA,SIN,LHR,TPE"  # 示例区域，您可以根据需要修改此变量"-cfcolo", cfcolo
 
 # 获取下载文件的文件名
 downloaded_file = download_url.split("/")[-1]
@@ -150,7 +150,7 @@ cf_ports = [
 random_port = random.choice(cf_ports)
 
 # 执行 cfst 命令，使用变量传递 cfcolo 和随机端口
-subprocess.run(["./cfst", "-o", "csv/result.csv", "-httping", "-tl", "150", "-tll", "20", "-tp", str(random_port), "-sl", "5", "-dn", "20"], check=True)
+subprocess.run(["./cfst", "-o", "csv/result.csv", "-httping", "-cfcolo", cfcolo, "-tl", "150", "-tll", "20", "-tp", str(random_port), "-sl", "5", "-dn", "20"], check=True)
 
 # 提取 IP 地址和下载速度，并保存到 cfip.txt 和 cfipport.txt
 ip_addresses = []

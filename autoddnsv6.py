@@ -57,6 +57,7 @@ LOCATION_TO_DOMAIN = {
 
     # 台湾
     "TPE": "twv6.616049.xyz",  # 台北桃园机场
+    "KHH": "proxy.tw.616049.xyz",  # 台湾高雄
     "TW": "twv6.616049.xyz",  # 台湾
 
     # 新加坡
