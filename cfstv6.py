@@ -195,7 +195,7 @@ with open(port_txt, mode="w", encoding="utf-8") as txtfile:
 print(f"提取的 IP 地址、端口、colo 信息和下载速度已保存到 {port_txt}")
 
 # 筛选下载速度大于 10 MB/s 的 IP，并写入 cf.txt
-with open(output_cf_txt, mode="a", encoding="utf-8") as cf_file:
+with open(output_cf_txt, mode="w", encoding="utf-8") as cf_file:
     for ip, speed in zip(ip_addresses, download_speeds):
         # 将下载速度从字符串转换为浮点数进行比较
         if float(speed) > 10:
