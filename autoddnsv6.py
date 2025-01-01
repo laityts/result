@@ -65,7 +65,7 @@ LOCATION_TO_DOMAIN = {
     "SG": "sgv6.616049.xyz",  # 新加坡
     
     # CF优选
-    "CF优选": "cfv6.616049.xyz"  # CF优选
+    "CFIPV6优选": "cfv6.616049.xyz"  # CF优选
 }
 
 # 从 cfipv6.txt 文件中读取前十个 IPv6 和标记
