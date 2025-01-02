@@ -106,10 +106,10 @@ def remove_unreachable_ips(file_path, log_path):
         print(f"\n开始检测 IP: {ip}, 端口: {port}")
         if check_tcp_connectivity(ip, port):
             reachable_lines.append(line)  # 保存可达的IP行
-            print(f"IP: {ip}, 端口: {port} 可达，保留")
+            print(f"IP: {ip}, 端口: {port} 连通，保留")
         else:
             unreachable_ips.append((ip, port))  # 保存不可达的IP地址
-            print(f"IP: {ip}, 端口: {port} 不可达，删除")
+            print(f"IP: {ip}, 端口: {port} 不通，删除")
 
     # 将可达的IP行写回文件
     with open(file_path, mode="w", encoding="utf-8") as file:
@@ -118,7 +118,7 @@ def remove_unreachable_ips(file_path, log_path):
 
     # 生成日志文件
     with open(log_path, mode="w", encoding="utf-8") as log:
-        log.write(f"以下IP地址不可达，已从文件中删除（检测时间: {datetime.now()}）：\n")
+        log.write(f"以下IP地址不通，已从文件中删除（检测时间: {datetime.now()}）：\n")
         for ip, port in unreachable_ips:
             log.write(f"IP: {ip}, 端口: {port}\n")
 
