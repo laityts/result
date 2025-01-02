@@ -3,10 +3,9 @@ import subprocess
 import csv
 import sys
 import requests
-import json
-import random
+import json  # 导入 json 模块
+import random  # 导入 random 模块用于生成随机端口
 from colo_emojis import colo_emojis
-from sk import remove_unreachable_ips
 
 # 检查是否已安装 requests
 try:
@@ -35,14 +34,13 @@ result_file = "csv/resultv6.csv"
 cfip_file = "cfip/cfipv6.txt"
 output_txt = "cfip/cfipv6.txt"
 port_txt = "port/cfipv6port.txt"
-log_file = "log/v6log.txt"
-output_cf_txt = "speed/cfv6.txt"
-sklog_file = "log/v6sklog.txt"
-commit_message = "Update result.csv and cfip.txt"
-download_url = "https://github.com/XIU2/CloudflareSpeedTest/releases/download/v2.2.5/CloudflareST_linux_arm64.tar.gz"
+log_file = "log/logv6.txt"  # 新增日志文件
+output_cf_txt = "speed/cfv6.txt"# 定义下载速度优选文件路径
+commit_message = "Update resultv6.csv and cfipv6.txt"
+download_url = "https://github.com/XIU2/CloudflareSpeedTest/releases/download/v2.2.5/CloudflareST_linux_arm64.tar.gz"  # 使用变量存储下载 URL
 
 # 定义 cfcolo 变量（目标区域）
-cfcolo = "HKG,ICN,LAX,SJC,ORD,NRT,HND,FRA,SIN,LHR,TPE"
+cfcolo = "HKG,ICN,LAX,SJC,ORD,NRT,HND,FRA,SIN,LHR,TPE"  # 示例区域，您可以根据需要修改此变量
 
 # 获取下载文件的文件名
 downloaded_file = download_url.split("/")[-1]
@@ -54,19 +52,19 @@ def remove_file(file_path):
         os.remove(file_path)
         print(f"已删除 {file_path} 文件。")
 
+# 获取IP的colo信息，并将完整数据写入日志文件
 def get_colo(ip_address):
     """获取IP的colo信息并写入日志文件"""
     # 默认使用主 API
     backup_url = f'https://ipinfo.io/{ip_address}?token=fcadb7eaa35d6a'
     try:
-        # 增加超时时间（连接超时 5 秒，读取超时 10 秒）
-        response = requests.get(backup_url, timeout=(5, 10))
+        response = requests.get(backup_url)
         if response.status_code == 200:
             data = response.json()
             # 将完整的响应数据写入日志文件
             with open(log_file, mode="a", encoding="utf-8") as log:
                 log.write(f"完整数据来自 {ip_address}:\n")
-                log.write(json.dumps(data, indent=4) + "\n\n")
+                log.write(json.dumps(data, indent=4) + "\n\n")  # 将字典转换为字符串
             # 提取国家代码
             country = data.get('country', '未知')
             return f"{country}"
@@ -78,8 +76,7 @@ def get_colo(ip_address):
     # 如果主 API 失败，尝试备用 API
     url = f'http://{ip_address}/cdn-cgi/trace'
     try:
-        # 增加超时时间（连接超时 5 秒，读取超时 10 秒）
-        response = requests.get(url, timeout=(5, 10))
+        response = requests.get(url)
         if response.status_code == 200:
             data = response.text
             # 将完整的响应数据写入日志文件
@@ -95,16 +92,18 @@ def get_colo(ip_address):
     except requests.exceptions.RequestException as e:
         print(f"备用 API 请求出错，IP {ip_address}: {e}")
     
-    # 降低请求频率，每次请求后等待 1 秒
-    time.sleep(1)
-    
     return "CFIPV6优选"
 
 # 检查 cfst 文件是否存在
 if not os.path.exists(cfst_path):
     print(f"文件 {cfst_path} 不存在，正在执行安装和测试命令...")
+
+    # 使用变量下载 CloudflareST
     subprocess.run(["wget", "-N", download_url], check=True)
+
+    # 判断下载文件的后缀并解压
     if downloaded_file.endswith(".tar.gz"):
+        # 解压 tar.gz 文件
         try:
             subprocess.run(["tar", "-zxf", downloaded_file], check=True)
             print(f"已成功解压: {downloaded_file}")
@@ -112,6 +111,7 @@ if not os.path.exists(cfst_path):
             print(f"解压失败: {e}")
             sys.exit(1)
     elif downloaded_file.endswith(".zip"):
+        # 解压 zip 文件
         try:
             subprocess.run(["unzip", downloaded_file], check=True)
             print(f"已成功解压: {downloaded_file}")
@@ -121,47 +121,59 @@ if not os.path.exists(cfst_path):
     else:
         print("无法识别的压缩文件格式！")
         sys.exit(1)
+
+    # 删除下载的压缩文件
     remove_file(downloaded_file)
+    
+    # 重命名解压后的文件
     subprocess.run(["mv", "CloudflareST", "cfst"], check=True)
+    
+    # 设置 cfst 文件为可执行
     subprocess.run(["chmod", "+x", "cfst"], check=True)
 
-# 删除 result.csv 和 cfip.txt 以及 log.txt 文件
+# 删除 resultv6.csv 和 cfipv6.txt 以及 log.txt 文件
 remove_file(result_file)
 remove_file(cfip_file)
 remove_file(log_file)
 
 # Cloudflare 支持的标准端口列表
-cf_ports = [443, 2053, 2083, 2087, 2096, 8443]
+cf_ports = [
+    443, 2053, 2083, 2087, 2096, 8443,  # HTTPS 标准端口
+]
 
 # 随机选择 Cloudflare 的标准端口
 random_port = random.choice(cf_ports)
 
-# 执行 cfst 命令，使用变量传递 cfcolo 和随机端口
+# 执行 cfst 命令，使用变量传递 cfcolo
 subprocess.run(["./cfst", "-f", "ipv6.txt", "-o", "csv/resultv6.csv", "-httping", "-cfcolo", cfcolo, "-tl", "150", "-tll", "20", "-tp", str(random_port), "-sl", "5", "-dn", "20"], check=True)
 
-# 提取 IP 地址和下载速度，并保存到 cfip.txt 和 cfipport.txt
+# 提取 IP 地址和下载速度，并保存到 cfipv6.txt 和 cfipv6port.txt
 ip_addresses = []
 download_speeds = []
 
 with open(result_file, mode="r", encoding="utf-8") as csvfile:
     reader = csv.reader(csvfile)
-    header = next(reader)
-    if "下载速度 (MB/s)" in header:
+    header = next(reader)  # 读取表头
+    # 确认下载速度所在的列
+    if "下载速度 (MB/s)" in header:  # 假设表头中有 "下载速度 (MB/s)"
         speed_index = header.index("下载速度 (MB/s)")
     else:
         print("无法找到下载速度列，请检查 CSV 文件表头。")
         sys.exit(1)
+    
+    # 提取 IP 地址和下载速度
     for row in reader:
-        ip_addresses.append(row[0])
-        download_speeds.append(row[speed_index])
+        ip_addresses.append(row[0])  # 假设 IP 地址在第一列
+        download_speeds.append(row[speed_index])  # 使用 speed_index 获取下载速度
+        # 如果已经提取了 20 个 IP，则停止提取
         if len(ip_addresses) >= 20:
             break
 
 # 将 IP 地址和 colo 信息写入 cfipv6.txt
 with open(output_txt, mode="w", encoding="utf-8") as txtfile:
     for ip, speed in zip(ip_addresses, download_speeds):
-        colo = get_colo(ip)
-        txtfile.write(f"{ip}#{colo}\n")
+        colo = get_colo(ip)  # 获取当前 IP 的 colo 信息
+        txtfile.write(f"{ip}#{colo}\n")  # 将 IP 和 colo 信息写入文件
         print(f"IP: {ip}, Colo: {colo}")
 
 print(f"提取的 IP 地址和 colo 信息已保存到 {output_txt}")
@@ -169,25 +181,26 @@ print(f"提取的 IP 地址和 colo 信息已保存到 {output_txt}")
 # 将 IP 地址、端口、colo 信息和下载速度写入 cfipv6port.txt
 with open(port_txt, mode="w", encoding="utf-8") as txtfile:
     for ip, speed in zip(ip_addresses, download_speeds):
-        colo = get_colo(ip)
-        emoji = colo_emojis.get(colo, "☁️")
-        txtfile.write(f"[{ip}]:{str(random_port)}#{emoji}{colo}┃⚡{speed}(MB/s)\n")
+        colo = get_colo(ip)  # 获取当前 IP 的 colo 信息
+        emoji = colo_emojis.get(colo, "☁️")  # 获取对应的表情符号，默认为 ☁️
+        txtfile.write(f"[{ip}]:{str(random_port)}#{emoji}{colo}┃⚡{speed}(MB/s)\n")  # 将 IP、端口、colo 信息和下载速度写入文件
         print(f"IP: [{ip}], Port: {random_port}, Colo: {emoji}{colo}, Speed: {speed}")
 
 print(f"提取的 IP 地址、端口、colo 信息和下载速度已保存到 {port_txt}")
 
-remove_unreachable_ips(output_cf_txt, sklog_file)
-
-# 筛选下载速度大于 10 MB/s 的 IP，并追加写入 cfv6.txt
-with open(output_cf_txt, mode="a", encoding="utf-8") as cf_file:
+# 筛选下载速度大于 10 MB/s 的 IP，并写入 cf.txt
+with open(output_cf_txt, mode="w", encoding="utf-8") as cf_file:
     for ip, speed in zip(ip_addresses, download_speeds):
+        # 将下载速度从字符串转换为浮点数进行比较
         if float(speed) > 10:
-            colo = get_colo(ip)
-            emoji = colo_emojis.get(colo, "☁️")
+            colo = get_colo(ip)  # 获取当前 IP 的 colo 信息
+            # 写入 IP、端口、colo 信息和下载速度
+            emoji = colo_emojis.get(colo, "☁️")  # 获取对应的表情符号，默认为 ☁️
             cf_file.write(f"[{ip}]:{str(random_port)}#{emoji}{colo}┃⚡{speed}(MB/s)\n")
             print(f"符合条件的 IP: [{ip}], Port: {random_port}, Colo: {emoji}{colo}, Speed: {speed}")
 
-print(f"筛选出的 IP 地址、端口、colo 信息和下载速度已追加到 {output_cf_txt}")
+print(f"筛选出的 IP 地址、端口、colo 信息和下载速度已保存到 {output_cf_txt}")
+
 
 # Git 上传步骤
 try:
