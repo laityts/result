@@ -17,11 +17,39 @@ logging.basicConfig(
 API_KEY = os.getenv("CLOUDFLARE_API_KEY")
 EMAIL = os.getenv("CLOUDFLARE_EMAIL")
 ZONE_ID = os.getenv("CLOUDFLARE_ZONE_ID")
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 
 # 确保从环境变量中获取到了这些信息
-if not all([API_KEY, EMAIL, ZONE_ID]):
-    logging.error("缺少 Cloudflare 配置信息，请确保在 GitHub Secrets 中设置了 CLOUDFLARE_API_KEY, CLOUDFLARE_EMAIL 和 CLOUDFLARE_ZONE_ID。")
+if not all([API_KEY, EMAIL, ZONE_ID, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID]):
+    logging.error("缺少必要的配置信息，请确保在 GitHub Secrets 中设置了 CLOUDFLARE_API_KEY, CLOUDFLARE_EMAIL, CLOUDFLARE_ZONE_ID, TELEGRAM_BOT_TOKEN 和 TELEGRAM_CHAT_ID。")
     sys.exit(1)
+
+# 发送消息到 Telegram
+def send_to_telegram(message):
+    url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+    payload = {
+        "chat_id": TELEGRAM_CHAT_ID,
+        "text": message
+    }
+    try:
+        response = requests.post(url, json=payload)
+        if response.status_code != 200:
+            logging.error(f"发送消息到 Telegram 失败: {response.status_code}, {response.text}")
+    except requests.exceptions.RequestException as e:
+        logging.error(f"请求失败: {e}")
+
+# 自定义日志处理器，将日志信息发送到 Telegram
+class TelegramLogHandler(logging.Handler):
+    def emit(self, record):
+        log_entry = self.format(record)
+        send_to_telegram(log_entry)
+
+# 添加 Telegram 日志处理器
+telegram_handler = TelegramLogHandler()
+telegram_handler.setLevel(logging.INFO)
+telegram_handler.setFormatter(logging.Formatter("%(asctime)s - %(levelname)s - %(message)s"))
+logging.getLogger().addHandler(telegram_handler)
 
 # 域名与标记映射关系（扩展机场三字码）
 LOCATION_TO_DOMAIN = {
@@ -159,7 +187,7 @@ def add_dns_records_bulk(ip_data):
 # 主程序
 if __name__ == "__main__":
     # 添加新的 DNS 记录
-    ip_data = get_ips_from_file("cfip/cfipfd.txt")
+    ip_data = get_ips_from_file("cfip/fd.txt")
     if not ip_data:
         logging.error("未读取到 IP 数据，请检查 cfipfd.txt 文件格式是否正确。")
     else:

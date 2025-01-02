@@ -125,6 +125,6 @@ def remove_unreachable_ips(file_path, log_path):
     print(f"\n日志已保存到 {log_path}")
 
 if __name__ == "__main__":
-    file_path = "speed/cfipv6.txt"  # 输入文件
-    log_path = "log/sklog.txt"  # 日志文件
+    file_path = "speed/ip.txt"  # 输入文件
+    log_path = "log/iplog.txt"  # 日志文件
     remove_unreachable_ips(file_path, log_path)

@@ -31,12 +31,12 @@ os.makedirs("speed", exist_ok=True)
 # 定义文件路径和变量
 cfst_path = "cfst"
 result_file = "csv/resultfd.csv"
-cfip_file = "cfip/cfipfd.txt"
-output_txt = "cfip/cfipfd.txt"
-port_txt = "port/cfipfdport.txt"
-log_file = "log/logfd.txt"  # 新增日志文件
-output_cf_txt = "cf/cffd.txt"# 定义下载速度优选文件路径
-commit_message = "Update result.csv and cfipfd.txt"
+cfip_file = "cfip/fd.txt"
+output_txt = "cfip/fd.txt"
+port_txt = "port/fdport.txt"
+log_file = "log/fdlog.txt"  # 新增日志文件
+output_cf_txt = "cf/fd.txt"# 定义下载速度优选文件路径
+commit_message = "Update result.csv and fd.txt"
 download_url = "https://github.com/XIU2/CloudflareSpeedTest/releases/download/v2.2.5/CloudflareST_linux_arm64.tar.gz"  # 使用变量存储下载 URL
 
 # 定义 cfcolo 变量（目标区域）
@@ -116,7 +116,7 @@ if not os.path.exists(cfst_path):
     # 设置 cfst 文件为可执行
     subprocess.run(["chmod", "+x", "cfst"], check=True)
 
-# 删除 resultfd.csv 和 cfipfd.txt 以及 logfd.txt 文件
+# 删除 resultfd.csv 和 fd.txt 以及 fd.txt 文件
 remove_file(result_file)
 remove_file(cfip_file)
 remove_file(log_file)
@@ -132,7 +132,7 @@ random_port = random.choice(cf_ports)
 # 执行 cfst 命令，使用变量传递 cfcolo
 subprocess.run(["./cfst", "-f", "proxy.txt", "-o", "csv/resultfd.csv", "-cfcolo", cfcolo, "-httping", "-tl", "300", "-tll", "20", "-tp", "443", "-dn", "100"], check=True)
 
-# 提取 IP 地址和下载速度，并保存到 cfipfd.txt 和 cfipfdport.txt
+# 提取 IP 地址和下载速度，并保存到 fd.txt 和 fdport.txt
 ip_addresses = []
 download_speeds = []
 
@@ -157,7 +157,7 @@ with open(result_file, mode="r", encoding="utf-8") as csvfile:
 # 用于跟踪每个 colo 的 IP 数量
 colo_counter = {}
 
-# 将 IP 地址和 colo 信息写入 cfipfd.txt
+# 将 IP 地址和 colo 信息写入 fd.txt
 with open(output_txt, mode="w", encoding="utf-8") as txtfile:
     for ip, speed in zip(ip_addresses, download_speeds):
         colo = get_colo(ip)  # 获取当前 IP 的 colo 信息
@@ -179,7 +179,7 @@ with open(output_txt, mode="w", encoding="utf-8") as txtfile:
 
 print(f"提取的 IP 地址和 colo 信息已保存到 {output_txt}")
 
-# 将 IP 地址、端口、colo 信息和下载速度写入 cfipfdport.txt
+# 将 IP 地址、端口、colo 信息和下载速度写入 fdport.txt
 with open(port_txt, mode="w", encoding="utf-8") as txtfile:
     for ip, speed in zip(ip_addresses, download_speeds):
         colo = get_colo(ip)  # 获取当前 IP 的 colo 信息

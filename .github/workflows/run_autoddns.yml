@@ -5,7 +5,7 @@ on:
     branches:
       - main  # 仅在推送到 main 分支时触发，可以修改为你想要的分支
     paths:
-      - 'cfip/cfip.txt'  # 只有 ipv6.txt 文件发生变化时才触发
+      - 'cfip/ip.txt'  # 只有 ipv6.txt 文件发生变化时才触发
       - 'csv/result.csv' 
 
 jobs:
@@ -17,6 +17,8 @@ jobs:
       CLOUDFLARE_API_KEY: ${{ secrets.CLOUDFLARE_API_KEY }}
       CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
       CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
 
     steps:
     - name: Checkout repository

@@ -32,13 +32,13 @@ os.makedirs("speed", exist_ok=True)
 # 定义文件路径和变量
 cfst_path = "cfst"
 result_file = "csv/resultv6.csv"
-cfip_file = "cfip/cfipv6.txt"
-output_txt = "cfip/cfipv6.txt"
-port_txt = "port/cfipv6port.txt"
+cfip_file = "cfip/ipv6.txt"
+output_txt = "cfip/ipv6.txt"
+port_txt = "port/ipv6port.txt"
 log_file = "log/v6log.txt"
-output_cf_txt = "speed/cfv6.txt"
-sklog_file = "log/v6sklog.txt"
-commit_message = "Update result.csv and cfip.txt"
+output_cf_txt = "speed/ipv6.txt"
+ipv6log_file = "log/ipv6log.txt"
+commit_message = "Update result.csv and ipv6.txt"
 download_url = "https://github.com/XIU2/CloudflareSpeedTest/releases/download/v2.2.5/CloudflareST_linux_arm64.tar.gz"
 
 # 定义 cfcolo 变量（目标区域）
@@ -125,7 +125,7 @@ if not os.path.exists(cfst_path):
     subprocess.run(["mv", "CloudflareST", "cfst"], check=True)
     subprocess.run(["chmod", "+x", "cfst"], check=True)
 
-# 删除 result.csv 和 cfip.txt 以及 log.txt 文件
+# 删除 result.csv 和 ipv6.txt 以及 log.txt 文件
 remove_file(result_file)
 remove_file(cfip_file)
 remove_file(log_file)
@@ -139,7 +139,7 @@ random_port = random.choice(cf_ports)
 # 执行 cfst 命令，使用变量传递 cfcolo 和随机端口
 subprocess.run(["./cfst", "-f", "ipv6.txt", "-o", "csv/resultv6.csv", "-httping", "-cfcolo", cfcolo, "-tl", "150", "-tll", "20", "-tp", str(random_port), "-sl", "5", "-dn", "20"], check=True)
 
-# 提取 IP 地址和下载速度，并保存到 cfip.txt 和 cfipport.txt
+# 提取 IP 地址和下载速度，并保存到 ipv6.txt 和 ipv6port.txt
 ip_addresses = []
 download_speeds = []
 
@@ -157,7 +157,7 @@ with open(result_file, mode="r", encoding="utf-8") as csvfile:
         if len(ip_addresses) >= 20:
             break
 
-# 将 IP 地址和 colo 信息写入 cfipv6.txt
+# 将 IP 地址和 colo 信息写入 ipv6.txt
 with open(output_txt, mode="w", encoding="utf-8") as txtfile:
     for ip, speed in zip(ip_addresses, download_speeds):
         colo = get_colo(ip)
@@ -166,7 +166,7 @@ with open(output_txt, mode="w", encoding="utf-8") as txtfile:
 
 print(f"提取的 IP 地址和 colo 信息已保存到 {output_txt}")
 
-# 将 IP 地址、端口、colo 信息和下载速度写入 cfipv6port.txt
+# 将 IP 地址、端口、colo 信息和下载速度写入 ipv6port.txt
 with open(port_txt, mode="w", encoding="utf-8") as txtfile:
     for ip, speed in zip(ip_addresses, download_speeds):
         colo = get_colo(ip)
@@ -176,9 +176,9 @@ with open(port_txt, mode="w", encoding="utf-8") as txtfile:
 
 print(f"提取的 IP 地址、端口、colo 信息和下载速度已保存到 {port_txt}")
 
-remove_unreachable_ips(output_cf_txt, sklog_file)
+remove_unreachable_ips(output_cf_txt, ipv6log_file)
 
-# 筛选下载速度大于 10 MB/s 的 IP，并追加写入 cfv6.txt
+# 筛选下载速度大于 10 MB/s 的 IP，并追加写入 ipv6.txt
 with open(output_cf_txt, mode="a", encoding="utf-8") as cf_file:
     for ip, speed in zip(ip_addresses, download_speeds):
         if float(speed) > 10:
