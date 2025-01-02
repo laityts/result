@@ -1,6 +1,6 @@
-完整数据来自 104.18.232.171:
+完整数据来自 104.16.7.221:
 {
-    "ip": "104.18.232.171",
+    "ip": "104.16.7.221",
     "city": "San Francisco",
     "region": "California",
     "country": "US",
@@ -12,7 +12,7 @@
         "asn": "AS13335",
         "name": "Cloudflare, Inc.",
         "domain": "cloudflare.com",
-        "route": "104.18.224.0/20",
+        "route": "104.16.0.0/20",
         "type": "hosting"
     },
     "company": {
@@ -37,16 +37,202 @@
         "phone": "+1-650-319-8930"
     },
     "domains": {
+        "ip": "104.16.7.221",
+        "total": 4,
+        "domains": [
+            "56wig.cn",
+            "p7z6a.cn",
+            "u02tf.cn",
+            "dicico.com.br"
+        ]
+    }
+}
+
+完整数据来自 162.159.43.98:
+{
+    "ip": "162.159.43.98",
+    "city": "San Francisco",
+    "region": "California",
+    "country": "US",
+    "loc": "37.7621,-122.3971",
+    "postal": "94107",
+    "timezone": "America/Los_Angeles",
+    "anycast": true,
+    "asn": {
+        "asn": "AS13335",
+        "name": "Cloudflare, Inc.",
+        "domain": "cloudflare.com",
+        "route": "162.159.42.0/23",
+        "type": "hosting"
+    },
+    "company": {
+        "name": "Cloudflare, Inc.",
+        "domain": "cloudflare.com",
+        "type": "hosting"
+    },
+    "privacy": {
+        "vpn": false,
+        "proxy": false,
+        "tor": false,
+        "relay": false,
+        "hosting": true,
+        "service": ""
+    },
+    "abuse": {
+        "address": "US, CA, San Francisco, 101 Townsend Street, 94107",
+        "country": "US",
+        "email": "abuse@cloudflare.com",
+        "name": "Abuse",
+        "network": "162.158.0.0/15",
+        "phone": "+1-650-319-8930"
+    },
+    "domains": {
         "page": 0,
         "total": 0,
         "domains": []
     }
 }
 
-完整数据来自 190.93.246.134:
+完整数据来自 162.159.60.10:
 {
-    "ip": "190.93.246.134",
-    "hostname": "cf-190-93-246-134.cloudflare.com",
+    "ip": "162.159.60.10",
+    "hostname": "pink.foundationdns.com",
+    "city": "San Francisco",
+    "region": "California",
+    "country": "US",
+    "loc": "37.7621,-122.3971",
+    "postal": "94107",
+    "timezone": "America/Los_Angeles",
+    "anycast": true,
+    "asn": {
+        "asn": "AS13335",
+        "name": "Cloudflare, Inc.",
+        "domain": "cloudflare.com",
+        "route": "162.159.60.0/24",
+        "type": "hosting"
+    },
+    "company": {
+        "name": "Cloudflare, Inc.",
+        "domain": "cloudflare.com",
+        "type": "hosting"
+    },
+    "privacy": {
+        "vpn": false,
+        "proxy": false,
+        "tor": false,
+        "relay": false,
+        "hosting": true,
+        "service": ""
+    },
+    "abuse": {
+        "address": "US, CA, San Francisco, 101 Townsend Street, 94107",
+        "country": "US",
+        "email": "abuse@cloudflare.com",
+        "name": "Abuse",
+        "network": "162.158.0.0/15",
+        "phone": "+1-650-319-8930"
+    },
+    "domains": {
+        "page": 0,
+        "total": 0,
+        "domains": []
+    }
+}
+
+完整数据来自 162.159.42.80:
+{
+    "ip": "162.159.42.80",
+    "hostname": "ns160.name.cloud.ibm.com",
+    "city": "San Francisco",
+    "region": "California",
+    "country": "US",
+    "loc": "37.7621,-122.3971",
+    "postal": "94107",
+    "timezone": "America/Los_Angeles",
+    "anycast": true,
+    "asn": {
+        "asn": "AS13335",
+        "name": "Cloudflare, Inc.",
+        "domain": "cloudflare.com",
+        "route": "162.159.42.0/23",
+        "type": "hosting"
+    },
+    "company": {
+        "name": "Cloudflare, Inc.",
+        "domain": "cloudflare.com",
+        "type": "hosting"
+    },
+    "privacy": {
+        "vpn": false,
+        "proxy": false,
+        "tor": false,
+        "relay": false,
+        "hosting": true,
+        "service": ""
+    },
+    "abuse": {
+        "address": "US, CA, San Francisco, 101 Townsend Street, 94107",
+        "country": "US",
+        "email": "abuse@cloudflare.com",
+        "name": "Abuse",
+        "network": "162.158.0.0/15",
+        "phone": "+1-650-319-8930"
+    },
+    "domains": {
+        "total": 0,
+        "domains": []
+    }
+}
+
+完整数据来自 162.159.80.43:
+{
+    "ip": "162.159.80.43",
+    "city": "San Francisco",
+    "region": "California",
+    "country": "US",
+    "loc": "37.7621,-122.3971",
+    "postal": "94107",
+    "timezone": "America/Los_Angeles",
+    "anycast": true,
+    "asn": {
+        "asn": "AS13335",
+        "name": "Cloudflare, Inc.",
+        "domain": "cloudflare.com",
+        "route": "162.159.80.0/24",
+        "type": "hosting"
+    },
+    "company": {
+        "name": "Cloudflare, Inc.",
+        "domain": "cloudflare.com",
+        "type": "hosting"
+    },
+    "privacy": {
+        "vpn": false,
+        "proxy": false,
+        "tor": false,
+        "relay": false,
+        "hosting": true,
+        "service": ""
+    },
+    "abuse": {
+        "address": "US, CA, San Francisco, 101 Townsend Street, 94107",
+        "country": "US",
+        "email": "abuse@cloudflare.com",
+        "name": "Abuse",
+        "network": "162.158.0.0/15",
+        "phone": "+1-650-319-8930"
+    },
+    "domains": {
+        "page": 0,
+        "total": 0,
+        "domains": []
+    }
+}
+
+完整数据来自 190.93.245.6:
+{
+    "ip": "190.93.245.6",
+    "hostname": "cf-190-93-245-6.cloudflare.com",
     "city": "Uruca",
     "region": "San Jos\u00e9",
     "country": "CR",
@@ -89,9 +275,9 @@
     }
 }
 
-完整数据来自 104.17.121.139:
+完整数据来自 104.16.6.63:
 {
-    "ip": "104.17.121.139",
+    "ip": "104.16.6.63",
     "city": "San Francisco",
     "region": "California",
     "country": "US",
@@ -103,7 +289,7 @@
         "asn": "AS13335",
         "name": "Cloudflare, Inc.",
         "domain": "cloudflare.com",
-        "route": "104.17.112.0/20",
+        "route": "104.16.0.0/20",
         "type": "hosting"
     },
     "company": {
@@ -128,106 +314,110 @@
         "phone": "+1-650-319-8930"
     },
     "domains": {
-        "total": 0,
-        "domains": []
-    }
-}
-
-完整数据来自 104.19.221.111:
-{
-    "ip": "104.19.221.111",
-    "city": "San Francisco",
-    "region": "California",
-    "country": "US",
-    "loc": "37.7621,-122.3971",
-    "postal": "94107",
-    "timezone": "America/Los_Angeles",
-    "anycast": true,
-    "asn": {
-        "asn": "AS13335",
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "route": "104.19.208.0/20",
-        "type": "hosting"
-    },
-    "company": {
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "type": "hosting"
-    },
-    "privacy": {
-        "vpn": false,
-        "proxy": false,
-        "tor": false,
-        "relay": false,
-        "hosting": true,
-        "service": ""
-    },
-    "abuse": {
-        "address": "US, CA, San Francisco, 101 Townsend Street, 94107",
-        "country": "US",
-        "email": "abuse@cloudflare.com",
-        "name": "Abuse",
-        "network": "104.16.0.0/12",
-        "phone": "+1-650-319-8930"
-    },
-    "domains": {
-        "page": 0,
-        "total": 0,
-        "domains": []
-    }
-}
-
-完整数据来自 104.16.199.234:
-{
-    "ip": "104.16.199.234",
-    "city": "San Francisco",
-    "region": "California",
-    "country": "US",
-    "loc": "37.7621,-122.3971",
-    "postal": "94107",
-    "timezone": "America/Los_Angeles",
-    "anycast": true,
-    "asn": {
-        "asn": "AS13335",
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "route": "104.16.192.0/20",
-        "type": "hosting"
-    },
-    "company": {
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "type": "hosting"
-    },
-    "privacy": {
-        "vpn": false,
-        "proxy": false,
-        "tor": false,
-        "relay": false,
-        "hosting": true,
-        "service": ""
-    },
-    "abuse": {
-        "address": "US, CA, San Francisco, 101 Townsend Street, 94107",
-        "country": "US",
-        "email": "abuse@cloudflare.com",
-        "name": "Abuse",
-        "network": "104.16.0.0/12",
-        "phone": "+1-650-319-8930"
-    },
-    "domains": {
-        "ip": "104.16.199.234",
-        "total": 1,
+        "ip": "104.16.6.63",
+        "total": 3,
         "domains": [
-            "allergandirect.es"
+            "feiouna.cn",
+            "lmwlhy31.cn",
+            "0rrgcd.cn"
         ]
     }
 }
 
-完整数据来自 104.16.204.242:
+完整数据来自 141.101.115.112:
 {
-    "ip": "104.16.204.242",
+    "ip": "141.101.115.112",
+    "city": "Munich",
+    "region": "Bavaria",
+    "country": "DE",
+    "loc": "48.1345,11.5710",
+    "postal": "80331",
+    "timezone": "Europe/Berlin",
+    "anycast": true,
+    "asn": {
+        "asn": "AS13335",
+        "name": "Cloudflare, Inc.",
+        "domain": "cloudflare.com",
+        "route": "141.101.114.0/23",
+        "type": "hosting"
+    },
+    "company": {
+        "name": "CloudFlare, Inc.",
+        "domain": "cloudflare.com",
+        "type": "hosting"
+    },
+    "privacy": {
+        "vpn": false,
+        "proxy": false,
+        "tor": false,
+        "relay": false,
+        "hosting": true,
+        "service": ""
+    },
+    "abuse": {
+        "address": "101 Townsend Street, San Francisco, CA 94107, US",
+        "country": "DE",
+        "email": "abuse@cloudflare.com",
+        "name": "CloudFlare, Inc.",
+        "network": "141.101.112.0/21",
+        "phone": "+49 89 2555 2276"
+    },
+    "domains": {
+        "page": 0,
+        "total": 0,
+        "domains": []
+    }
+}
+
+完整数据来自 190.93.247.85:
+{
+    "ip": "190.93.247.85",
+    "hostname": "cf-190-93-247-85.cloudflare.com",
+    "city": "Uruca",
+    "region": "San Jos\u00e9",
+    "country": "CR",
+    "loc": "9.9333,-84.2000",
+    "postal": "10904",
+    "timezone": "America/Costa_Rica",
+    "anycast": true,
+    "asn": {
+        "asn": "AS13335",
+        "name": "Cloudflare, Inc.",
+        "domain": "cloudflare.com",
+        "route": "190.93.244.0/22",
+        "type": "hosting"
+    },
+    "company": {
+        "name": "CloudFlare Latin America S.R.L",
+        "domain": "cloudflare.com",
+        "type": "hosting"
+    },
+    "privacy": {
+        "vpn": false,
+        "proxy": false,
+        "tor": false,
+        "relay": false,
+        "hosting": true,
+        "service": ""
+    },
+    "abuse": {
+        "address": "Townsend Street, 101, -, 94107 - San Francisco - CA",
+        "country": "US",
+        "email": "noc@cloudflare.com",
+        "name": "Cloudflare Network Operations",
+        "network": "190.93.240.0/20",
+        "phone": "+1  6503198930 [0000]"
+    },
+    "domains": {
+        "page": 0,
+        "total": 0,
+        "domains": []
+    }
+}
+
+完整数据来自 108.162.198.163:
+{
+    "ip": "108.162.198.163",
     "city": "San Francisco",
     "region": "California",
     "country": "US",
@@ -239,7 +429,7 @@
         "asn": "AS13335",
         "name": "Cloudflare, Inc.",
         "domain": "cloudflare.com",
-        "route": "104.16.192.0/20",
+        "route": "108.162.198.0/24",
         "type": "hosting"
     },
     "company": {
@@ -260,7 +450,7 @@
         "country": "US",
         "email": "abuse@cloudflare.com",
         "name": "Abuse",
-        "network": "104.16.0.0/12",
+        "network": "108.162.192.0/18",
         "phone": "+1-650-319-8930"
     },
     "domains": {
@@ -270,25 +460,26 @@
     }
 }
 
-完整数据来自 104.19.158.146:
+完整数据来自 190.93.246.240:
 {
-    "ip": "104.19.158.146",
-    "city": "San Francisco",
-    "region": "California",
-    "country": "US",
-    "loc": "37.7621,-122.3971",
-    "postal": "94107",
-    "timezone": "America/Los_Angeles",
+    "ip": "190.93.246.240",
+    "hostname": "cf-190-93-246-240.cloudflare.com",
+    "city": "Uruca",
+    "region": "San Jos\u00e9",
+    "country": "CR",
+    "loc": "9.9333,-84.2000",
+    "postal": "10904",
+    "timezone": "America/Costa_Rica",
     "anycast": true,
     "asn": {
         "asn": "AS13335",
         "name": "Cloudflare, Inc.",
         "domain": "cloudflare.com",
-        "route": "104.19.144.0/20",
+        "route": "190.93.244.0/22",
         "type": "hosting"
     },
     "company": {
-        "name": "Cloudflare, Inc.",
+        "name": "CloudFlare Latin America S.R.L",
         "domain": "cloudflare.com",
         "type": "hosting"
     },
@@ -301,22 +492,23 @@
         "service": ""
     },
     "abuse": {
-        "address": "US, CA, San Francisco, 101 Townsend Street, 94107",
+        "address": "Townsend Street, 101, -, 94107 - San Francisco - CA",
         "country": "US",
-        "email": "abuse@cloudflare.com",
-        "name": "Abuse",
-        "network": "104.16.0.0/12",
-        "phone": "+1-650-319-8930"
+        "email": "noc@cloudflare.com",
+        "name": "Cloudflare Network Operations",
+        "network": "190.93.240.0/20",
+        "phone": "+1  6503198930 [0000]"
     },
     "domains": {
+        "page": 0,
         "total": 0,
         "domains": []
     }
 }
 
-完整数据来自 104.17.177.224:
+完整数据来自 162.159.35.215:
 {
-    "ip": "104.17.177.224",
+    "ip": "162.159.35.215",
     "city": "San Francisco",
     "region": "California",
     "country": "US",
@@ -328,7 +520,7 @@
         "asn": "AS13335",
         "name": "Cloudflare, Inc.",
         "domain": "cloudflare.com",
-        "route": "104.17.176.0/20",
+        "route": "162.159.34.0/23",
         "type": "hosting"
     },
     "company": {
@@ -349,7 +541,7 @@
         "country": "US",
         "email": "abuse@cloudflare.com",
         "name": "Abuse",
-        "network": "104.16.0.0/12",
+        "network": "162.158.0.0/15",
         "phone": "+1-650-319-8930"
     },
     "domains": {
@@ -359,9 +551,53 @@
     }
 }
 
-完整数据来自 104.17.164.239:
+完整数据来自 141.101.114.192:
 {
-    "ip": "104.17.164.239",
+    "ip": "141.101.114.192",
+    "city": "Munich",
+    "region": "Bavaria",
+    "country": "DE",
+    "loc": "48.1345,11.5710",
+    "postal": "80331",
+    "timezone": "Europe/Berlin",
+    "anycast": true,
+    "asn": {
+        "asn": "AS13335",
+        "name": "Cloudflare, Inc.",
+        "domain": "cloudflare.com",
+        "route": "141.101.114.0/23",
+        "type": "hosting"
+    },
+    "company": {
+        "name": "CloudFlare, Inc.",
+        "domain": "cloudflare.com",
+        "type": "hosting"
+    },
+    "privacy": {
+        "vpn": false,
+        "proxy": false,
+        "tor": false,
+        "relay": false,
+        "hosting": true,
+        "service": ""
+    },
+    "abuse": {
+        "address": "101 Townsend Street, San Francisco, CA 94107, US",
+        "country": "DE",
+        "email": "abuse@cloudflare.com",
+        "name": "CloudFlare, Inc.",
+        "network": "141.101.112.0/21",
+        "phone": "+49 89 2555 2276"
+    },
+    "domains": {
+        "total": 0,
+        "domains": []
+    }
+}
+
+完整数据来自 104.16.11.103:
+{
+    "ip": "104.16.11.103",
     "city": "San Francisco",
     "region": "California",
     "country": "US",
@@ -373,7 +609,7 @@
         "asn": "AS13335",
         "name": "Cloudflare, Inc.",
         "domain": "cloudflare.com",
-        "route": "104.17.160.0/20",
+        "route": "104.16.0.0/20",
         "type": "hosting"
     },
     "company": {
@@ -398,15 +634,21 @@
         "phone": "+1-650-319-8930"
     },
     "domains": {
-        "page": 0,
-        "total": 0,
-        "domains": []
+        "ip": "104.16.11.103",
+        "total": 19,
+        "domains": [
+            "syngentaagriclime.com.au",
+            "yqu58b.cn",
+            "durivo.com.au",
+            "linshena.cn",
+            "seedcare.au"
+        ]
     }
 }
 
-完整数据来自 104.16.252.40:
+完整数据来自 104.16.15.123:
 {
-    "ip": "104.16.252.40",
+    "ip": "104.16.15.123",
     "city": "San Francisco",
     "region": "California",
     "country": "US",
@@ -418,7 +660,7 @@
         "asn": "AS13335",
         "name": "Cloudflare, Inc.",
         "domain": "cloudflare.com",
-        "route": "104.16.240.0/20",
+        "route": "104.16.0.0/20",
         "type": "hosting"
     },
     "company": {
@@ -443,15 +685,17 @@
         "phone": "+1-650-319-8930"
     },
     "domains": {
-        "page": 0,
-        "total": 0,
-        "domains": []
+        "ip": "104.16.15.123",
+        "total": 1,
+        "domains": [
+            "bu5ild.cn"
+        ]
     }
 }
 
-完整数据来自 104.16.240.80:
+完整数据来自 104.16.12.80:
 {
-    "ip": "104.16.240.80",
+    "ip": "104.16.12.80",
     "city": "San Francisco",
     "region": "California",
     "country": "US",
@@ -463,7 +707,7 @@
         "asn": "AS13335",
         "name": "Cloudflare, Inc.",
         "domain": "cloudflare.com",
-        "route": "104.16.240.0/20",
+        "route": "104.16.0.0/20",
         "type": "hosting"
     },
     "company": {
@@ -488,59 +732,17 @@
         "phone": "+1-650-319-8930"
     },
     "domains": {
-        "page": 0,
-        "total": 0,
-        "domains": []
+        "ip": "104.16.12.80",
+        "total": 1,
+        "domains": [
+            "j15tb.cn"
+        ]
     }
 }
 
-完整数据来自 104.18.94.214:
+完整数据来自 198.41.209.129:
 {
-    "ip": "104.18.94.214",
-    "city": "San Francisco",
-    "region": "California",
-    "country": "US",
-    "loc": "37.7621,-122.3971",
-    "postal": "94107",
-    "timezone": "America/Los_Angeles",
-    "anycast": true,
-    "asn": {
-        "asn": "AS13335",
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "route": "104.18.80.0/20",
-        "type": "hosting"
-    },
-    "company": {
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "type": "hosting"
-    },
-    "privacy": {
-        "vpn": false,
-        "proxy": false,
-        "tor": false,
-        "relay": false,
-        "hosting": true,
-        "service": ""
-    },
-    "abuse": {
-        "address": "US, CA, San Francisco, 101 Townsend Street, 94107",
-        "country": "US",
-        "email": "abuse@cloudflare.com",
-        "name": "Abuse",
-        "network": "104.16.0.0/12",
-        "phone": "+1-650-319-8930"
-    },
-    "domains": {
-        "total": 0,
-        "domains": []
-    }
-}
-
-完整数据来自 198.41.209.187:
-{
-    "ip": "198.41.209.187",
+    "ip": "198.41.209.129",
     "city": "San Francisco",
     "region": "California",
     "country": "US",
@@ -583,9 +785,9 @@
     }
 }
 
-完整数据来自 104.16.246.5:
+完整数据来自 198.41.212.213:
 {
-    "ip": "104.16.246.5",
+    "ip": "198.41.212.213",
     "city": "San Francisco",
     "region": "California",
     "country": "US",
@@ -597,7 +799,141 @@
         "asn": "AS13335",
         "name": "Cloudflare, Inc.",
         "domain": "cloudflare.com",
-        "route": "104.16.240.0/20",
+        "route": "198.41.212.0/24",
+        "type": "hosting"
+    },
+    "company": {
+        "name": "Cloudflare, Inc.",
+        "domain": "cloudflare.com",
+        "type": "hosting"
+    },
+    "privacy": {
+        "vpn": false,
+        "proxy": false,
+        "tor": false,
+        "relay": false,
+        "hosting": true,
+        "service": ""
+    },
+    "abuse": {
+        "address": "US, CA, San Francisco, 101 Townsend Street, 94107",
+        "country": "US",
+        "email": "abuse@cloudflare.com",
+        "name": "Abuse",
+        "network": "198.41.128.0/17",
+        "phone": "+1-650-319-8930"
+    },
+    "domains": {
+        "page": 0,
+        "total": 0,
+        "domains": []
+    }
+}
+
+完整数据来自 198.41.221.142:
+{
+    "ip": "198.41.221.142",
+    "city": "San Francisco",
+    "region": "California",
+    "country": "US",
+    "loc": "37.7621,-122.3971",
+    "postal": "94107",
+    "timezone": "America/Los_Angeles",
+    "anycast": true,
+    "asn": {
+        "asn": "AS13335",
+        "name": "Cloudflare, Inc.",
+        "domain": "cloudflare.com",
+        "route": "198.41.220.0/23",
+        "type": "hosting"
+    },
+    "company": {
+        "name": "Cloudflare, Inc.",
+        "domain": "cloudflare.com",
+        "type": "hosting"
+    },
+    "privacy": {
+        "vpn": false,
+        "proxy": false,
+        "tor": false,
+        "relay": false,
+        "hosting": true,
+        "service": ""
+    },
+    "abuse": {
+        "address": "US, CA, San Francisco, 101 Townsend Street, 94107",
+        "country": "US",
+        "email": "abuse@cloudflare.com",
+        "name": "Abuse",
+        "network": "198.41.128.0/17",
+        "phone": "+1-650-319-8930"
+    },
+    "domains": {
+        "page": 0,
+        "total": 0,
+        "domains": []
+    }
+}
+
+完整数据来自 198.41.220.83:
+{
+    "ip": "198.41.220.83",
+    "city": "San Francisco",
+    "region": "California",
+    "country": "US",
+    "loc": "37.7621,-122.3971",
+    "postal": "94107",
+    "timezone": "America/Los_Angeles",
+    "anycast": true,
+    "asn": {
+        "asn": "AS13335",
+        "name": "Cloudflare, Inc.",
+        "domain": "cloudflare.com",
+        "route": "198.41.220.0/23",
+        "type": "hosting"
+    },
+    "company": {
+        "name": "Cloudflare, Inc.",
+        "domain": "cloudflare.com",
+        "type": "hosting"
+    },
+    "privacy": {
+        "vpn": false,
+        "proxy": false,
+        "tor": false,
+        "relay": false,
+        "hosting": true,
+        "service": ""
+    },
+    "abuse": {
+        "address": "US, CA, San Francisco, 101 Townsend Street, 94107",
+        "country": "US",
+        "email": "abuse@cloudflare.com",
+        "name": "Abuse",
+        "network": "198.41.128.0/17",
+        "phone": "+1-650-319-8930"
+    },
+    "domains": {
+        "total": 0,
+        "domains": []
+    }
+}
+
+完整数据来自 104.16.7.221:
+{
+    "ip": "104.16.7.221",
+    "city": "San Francisco",
+    "region": "California",
+    "country": "US",
+    "loc": "37.7621,-122.3971",
+    "postal": "94107",
+    "timezone": "America/Los_Angeles",
+    "anycast": true,
+    "asn": {
+        "asn": "AS13335",
+        "name": "Cloudflare, Inc.",
+        "domain": "cloudflare.com",
+        "route": "104.16.0.0/20",
         "type": "hosting"
     },
     "company": {
@@ -622,111 +958,20 @@
         "phone": "+1-650-319-8930"
     },
     "domains": {
-        "page": 0,
-        "total": 0,
-        "domains": []
-    }
-}
-
-完整数据来自 172.64.159.226:
-{
-    "ip": "172.64.159.226",
-    "city": "San Francisco",
-    "region": "California",
-    "country": "US",
-    "loc": "37.7621,-122.3971",
-    "postal": "94107",
-    "timezone": "America/Los_Angeles",
-    "anycast": true,
-    "asn": {
-        "asn": "AS13335",
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "route": "172.64.159.0/24",
-        "type": "hosting"
-    },
-    "company": {
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "type": "hosting"
-    },
-    "privacy": {
-        "vpn": false,
-        "proxy": false,
-        "tor": false,
-        "relay": false,
-        "hosting": true,
-        "service": ""
-    },
-    "abuse": {
-        "address": "US, CA, San Francisco, 101 Townsend Street, 94107",
-        "country": "US",
-        "email": "abuse@cloudflare.com",
-        "name": "Abuse",
-        "network": "172.64.0.0/13",
-        "phone": "+1-650-319-8930"
-    },
-    "domains": {
-        "page": 0,
-        "total": 0,
-        "domains": []
-    }
-}
-
-完整数据来自 104.17.172.74:
-{
-    "ip": "104.17.172.74",
-    "city": "San Francisco",
-    "region": "California",
-    "country": "US",
-    "loc": "37.7621,-122.3971",
-    "postal": "94107",
-    "timezone": "America/Los_Angeles",
-    "anycast": true,
-    "asn": {
-        "asn": "AS13335",
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "route": "104.17.160.0/20",
-        "type": "hosting"
-    },
-    "company": {
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "type": "hosting"
-    },
-    "privacy": {
-        "vpn": false,
-        "proxy": false,
-        "tor": false,
-        "relay": false,
-        "hosting": true,
-        "service": ""
-    },
-    "abuse": {
-        "address": "US, CA, San Francisco, 101 Townsend Street, 94107",
-        "country": "US",
-        "email": "abuse@cloudflare.com",
-        "name": "Abuse",
-        "network": "104.16.0.0/12",
-        "phone": "+1-650-319-8930"
-    },
-    "domains": {
-        "ip": "104.17.172.74",
-        "total": 10,
+        "ip": "104.16.7.221",
+        "total": 4,
         "domains": [
-            "huxley.com",
-            "huxley.fr",
-            "huxley.co.uk",
-            "huxleyit.com",
-            "huxleyeurope.co.uk"
+            "56wig.cn",
+            "p7z6a.cn",
+            "u02tf.cn",
+            "dicico.com.br"
         ]
     }
 }
 
-完整数据来自 104.18.83.53:
+完整数据来自 162.159.43.98:
 {
-    "ip": "104.18.83.53",
+    "ip": "162.159.43.98",
     "city": "San Francisco",
     "region": "California",
     "country": "US",
@@ -738,7 +983,7 @@
         "asn": "AS13335",
         "name": "Cloudflare, Inc.",
         "domain": "cloudflare.com",
-        "route": "104.18.80.0/20",
+        "route": "162.159.42.0/23",
         "type": "hosting"
     },
     "company": {
@@ -759,7 +1004,7 @@
         "country": "US",
         "email": "abuse@cloudflare.com",
         "name": "Abuse",
-        "network": "104.16.0.0/12",
+        "network": "162.158.0.0/15",
         "phone": "+1-650-319-8930"
     },
     "domains": {
@@ -769,9 +1014,10 @@
     }
 }
 
-完整数据来自 104.18.81.44:
+完整数据来自 162.159.60.10:
 {
-    "ip": "104.18.81.44",
+    "ip": "162.159.60.10",
+    "hostname": "pink.foundationdns.com",
     "city": "San Francisco",
     "region": "California",
     "country": "US",
@@ -783,7 +1029,7 @@
         "asn": "AS13335",
         "name": "Cloudflare, Inc.",
         "domain": "cloudflare.com",
-        "route": "104.18.80.0/20",
+        "route": "162.159.60.0/24",
         "type": "hosting"
     },
     "company": {
@@ -804,7 +1050,7 @@
         "country": "US",
         "email": "abuse@cloudflare.com",
         "name": "Abuse",
-        "network": "104.16.0.0/12",
+        "network": "162.158.0.0/15",
         "phone": "+1-650-319-8930"
     },
     "domains": {
@@ -814,9 +1060,10 @@
     }
 }
 
-完整数据来自 104.17.174.200:
+完整数据来自 162.159.42.80:
 {
-    "ip": "104.17.174.200",
+    "ip": "162.159.42.80",
+    "hostname": "ns160.name.cloud.ibm.com",
     "city": "San Francisco",
     "region": "California",
     "country": "US",
@@ -828,7 +1075,7 @@
         "asn": "AS13335",
         "name": "Cloudflare, Inc.",
         "domain": "cloudflare.com",
-        "route": "104.17.160.0/20",
+        "route": "162.159.42.0/23",
         "type": "hosting"
     },
     "company": {
@@ -849,19 +1096,18 @@
         "country": "US",
         "email": "abuse@cloudflare.com",
         "name": "Abuse",
-        "network": "104.16.0.0/12",
+        "network": "162.158.0.0/15",
         "phone": "+1-650-319-8930"
     },
     "domains": {
-        "page": 0,
         "total": 0,
         "domains": []
     }
 }
 
-完整数据来自 104.17.62.79:
+完整数据来自 162.159.80.43:
 {
-    "ip": "104.17.62.79",
+    "ip": "162.159.80.43",
     "city": "San Francisco",
     "region": "California",
     "country": "US",
@@ -873,7 +1119,7 @@
         "asn": "AS13335",
         "name": "Cloudflare, Inc.",
         "domain": "cloudflare.com",
-        "route": "104.17.48.0/20",
+        "route": "162.159.80.0/24",
         "type": "hosting"
     },
     "company": {
@@ -894,7 +1140,7 @@
         "country": "US",
         "email": "abuse@cloudflare.com",
         "name": "Abuse",
-        "network": "104.16.0.0/12",
+        "network": "162.158.0.0/15",
         "phone": "+1-650-319-8930"
     },
     "domains": {
@@ -904,55 +1150,10 @@
     }
 }
 
-完整数据来自 104.18.232.171:
+完整数据来自 190.93.245.6:
 {
-    "ip": "104.18.232.171",
-    "city": "San Francisco",
-    "region": "California",
-    "country": "US",
-    "loc": "37.7621,-122.3971",
-    "postal": "94107",
-    "timezone": "America/Los_Angeles",
-    "anycast": true,
-    "asn": {
-        "asn": "AS13335",
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "route": "104.18.224.0/20",
-        "type": "hosting"
-    },
-    "company": {
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "type": "hosting"
-    },
-    "privacy": {
-        "vpn": false,
-        "proxy": false,
-        "tor": false,
-        "relay": false,
-        "hosting": true,
-        "service": ""
-    },
-    "abuse": {
-        "address": "US, CA, San Francisco, 101 Townsend Street, 94107",
-        "country": "US",
-        "email": "abuse@cloudflare.com",
-        "name": "Abuse",
-        "network": "104.16.0.0/12",
-        "phone": "+1-650-319-8930"
-    },
-    "domains": {
-        "page": 0,
-        "total": 0,
-        "domains": []
-    }
-}
-
-完整数据来自 190.93.246.134:
-{
-    "ip": "190.93.246.134",
-    "hostname": "cf-190-93-246-134.cloudflare.com",
+    "ip": "190.93.245.6",
+    "hostname": "cf-190-93-245-6.cloudflare.com",
     "city": "Uruca",
     "region": "San Jos\u00e9",
     "country": "CR",
@@ -995,9 +1196,9 @@
     }
 }
 
-完整数据来自 104.17.121.139:
+完整数据来自 104.16.6.63:
 {
-    "ip": "104.17.121.139",
+    "ip": "104.16.6.63",
     "city": "San Francisco",
     "region": "California",
     "country": "US",
@@ -1009,7 +1210,7 @@
         "asn": "AS13335",
         "name": "Cloudflare, Inc.",
         "domain": "cloudflare.com",
-        "route": "104.17.112.0/20",
+        "route": "104.16.0.0/20",
         "type": "hosting"
     },
     "company": {
@@ -1034,106 +1235,110 @@
         "phone": "+1-650-319-8930"
     },
     "domains": {
-        "total": 0,
-        "domains": []
-    }
-}
-
-完整数据来自 104.19.221.111:
-{
-    "ip": "104.19.221.111",
-    "city": "San Francisco",
-    "region": "California",
-    "country": "US",
-    "loc": "37.7621,-122.3971",
-    "postal": "94107",
-    "timezone": "America/Los_Angeles",
-    "anycast": true,
-    "asn": {
-        "asn": "AS13335",
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "route": "104.19.208.0/20",
-        "type": "hosting"
-    },
-    "company": {
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "type": "hosting"
-    },
-    "privacy": {
-        "vpn": false,
-        "proxy": false,
-        "tor": false,
-        "relay": false,
-        "hosting": true,
-        "service": ""
-    },
-    "abuse": {
-        "address": "US, CA, San Francisco, 101 Townsend Street, 94107",
-        "country": "US",
-        "email": "abuse@cloudflare.com",
-        "name": "Abuse",
-        "network": "104.16.0.0/12",
-        "phone": "+1-650-319-8930"
-    },
-    "domains": {
-        "page": 0,
-        "total": 0,
-        "domains": []
-    }
-}
-
-完整数据来自 104.16.199.234:
-{
-    "ip": "104.16.199.234",
-    "city": "San Francisco",
-    "region": "California",
-    "country": "US",
-    "loc": "37.7621,-122.3971",
-    "postal": "94107",
-    "timezone": "America/Los_Angeles",
-    "anycast": true,
-    "asn": {
-        "asn": "AS13335",
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "route": "104.16.192.0/20",
-        "type": "hosting"
-    },
-    "company": {
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "type": "hosting"
-    },
-    "privacy": {
-        "vpn": false,
-        "proxy": false,
-        "tor": false,
-        "relay": false,
-        "hosting": true,
-        "service": ""
-    },
-    "abuse": {
-        "address": "US, CA, San Francisco, 101 Townsend Street, 94107",
-        "country": "US",
-        "email": "abuse@cloudflare.com",
-        "name": "Abuse",
-        "network": "104.16.0.0/12",
-        "phone": "+1-650-319-8930"
-    },
-    "domains": {
-        "ip": "104.16.199.234",
-        "total": 1,
+        "ip": "104.16.6.63",
+        "total": 3,
         "domains": [
-            "allergandirect.es"
+            "feiouna.cn",
+            "lmwlhy31.cn",
+            "0rrgcd.cn"
         ]
     }
 }
 
-完整数据来自 104.16.204.242:
+完整数据来自 141.101.115.112:
 {
-    "ip": "104.16.204.242",
+    "ip": "141.101.115.112",
+    "city": "Munich",
+    "region": "Bavaria",
+    "country": "DE",
+    "loc": "48.1345,11.5710",
+    "postal": "80331",
+    "timezone": "Europe/Berlin",
+    "anycast": true,
+    "asn": {
+        "asn": "AS13335",
+        "name": "Cloudflare, Inc.",
+        "domain": "cloudflare.com",
+        "route": "141.101.114.0/23",
+        "type": "hosting"
+    },
+    "company": {
+        "name": "CloudFlare, Inc.",
+        "domain": "cloudflare.com",
+        "type": "hosting"
+    },
+    "privacy": {
+        "vpn": false,
+        "proxy": false,
+        "tor": false,
+        "relay": false,
+        "hosting": true,
+        "service": ""
+    },
+    "abuse": {
+        "address": "101 Townsend Street, San Francisco, CA 94107, US",
+        "country": "DE",
+        "email": "abuse@cloudflare.com",
+        "name": "CloudFlare, Inc.",
+        "network": "141.101.112.0/21",
+        "phone": "+49 89 2555 2276"
+    },
+    "domains": {
+        "page": 0,
+        "total": 0,
+        "domains": []
+    }
+}
+
+完整数据来自 190.93.247.85:
+{
+    "ip": "190.93.247.85",
+    "hostname": "cf-190-93-247-85.cloudflare.com",
+    "city": "Uruca",
+    "region": "San Jos\u00e9",
+    "country": "CR",
+    "loc": "9.9333,-84.2000",
+    "postal": "10904",
+    "timezone": "America/Costa_Rica",
+    "anycast": true,
+    "asn": {
+        "asn": "AS13335",
+        "name": "Cloudflare, Inc.",
+        "domain": "cloudflare.com",
+        "route": "190.93.244.0/22",
+        "type": "hosting"
+    },
+    "company": {
+        "name": "CloudFlare Latin America S.R.L",
+        "domain": "cloudflare.com",
+        "type": "hosting"
+    },
+    "privacy": {
+        "vpn": false,
+        "proxy": false,
+        "tor": false,
+        "relay": false,
+        "hosting": true,
+        "service": ""
+    },
+    "abuse": {
+        "address": "Townsend Street, 101, -, 94107 - San Francisco - CA",
+        "country": "US",
+        "email": "noc@cloudflare.com",
+        "name": "Cloudflare Network Operations",
+        "network": "190.93.240.0/20",
+        "phone": "+1  6503198930 [0000]"
+    },
+    "domains": {
+        "page": 0,
+        "total": 0,
+        "domains": []
+    }
+}
+
+完整数据来自 108.162.198.163:
+{
+    "ip": "108.162.198.163",
     "city": "San Francisco",
     "region": "California",
     "country": "US",
@@ -1145,7 +1350,7 @@
         "asn": "AS13335",
         "name": "Cloudflare, Inc.",
         "domain": "cloudflare.com",
-        "route": "104.16.192.0/20",
+        "route": "108.162.198.0/24",
         "type": "hosting"
     },
     "company": {
@@ -1166,7 +1371,7 @@
         "country": "US",
         "email": "abuse@cloudflare.com",
         "name": "Abuse",
-        "network": "104.16.0.0/12",
+        "network": "108.162.192.0/18",
         "phone": "+1-650-319-8930"
     },
     "domains": {
@@ -1176,25 +1381,26 @@
     }
 }
 
-完整数据来自 104.19.158.146:
+完整数据来自 190.93.246.240:
 {
-    "ip": "104.19.158.146",
-    "city": "San Francisco",
-    "region": "California",
-    "country": "US",
-    "loc": "37.7621,-122.3971",
-    "postal": "94107",
-    "timezone": "America/Los_Angeles",
+    "ip": "190.93.246.240",
+    "hostname": "cf-190-93-246-240.cloudflare.com",
+    "city": "Uruca",
+    "region": "San Jos\u00e9",
+    "country": "CR",
+    "loc": "9.9333,-84.2000",
+    "postal": "10904",
+    "timezone": "America/Costa_Rica",
     "anycast": true,
     "asn": {
         "asn": "AS13335",
         "name": "Cloudflare, Inc.",
         "domain": "cloudflare.com",
-        "route": "104.19.144.0/20",
+        "route": "190.93.244.0/22",
         "type": "hosting"
     },
     "company": {
-        "name": "Cloudflare, Inc.",
+        "name": "CloudFlare Latin America S.R.L",
         "domain": "cloudflare.com",
         "type": "hosting"
     },
@@ -1207,22 +1413,23 @@
         "service": ""
     },
     "abuse": {
-        "address": "US, CA, San Francisco, 101 Townsend Street, 94107",
+        "address": "Townsend Street, 101, -, 94107 - San Francisco - CA",
         "country": "US",
-        "email": "abuse@cloudflare.com",
-        "name": "Abuse",
-        "network": "104.16.0.0/12",
-        "phone": "+1-650-319-8930"
+        "email": "noc@cloudflare.com",
+        "name": "Cloudflare Network Operations",
+        "network": "190.93.240.0/20",
+        "phone": "+1  6503198930 [0000]"
     },
     "domains": {
+        "page": 0,
         "total": 0,
         "domains": []
     }
 }
 
-完整数据来自 104.17.177.224:
+完整数据来自 162.159.35.215:
 {
-    "ip": "104.17.177.224",
+    "ip": "162.159.35.215",
     "city": "San Francisco",
     "region": "California",
     "country": "US",
@@ -1234,7 +1441,7 @@
         "asn": "AS13335",
         "name": "Cloudflare, Inc.",
         "domain": "cloudflare.com",
-        "route": "104.17.176.0/20",
+        "route": "162.159.34.0/23",
         "type": "hosting"
     },
     "company": {
@@ -1255,7 +1462,7 @@
         "country": "US",
         "email": "abuse@cloudflare.com",
         "name": "Abuse",
-        "network": "104.16.0.0/12",
+        "network": "162.158.0.0/15",
         "phone": "+1-650-319-8930"
     },
     "domains": {
@@ -1265,9 +1472,53 @@
     }
 }
 
-完整数据来自 104.17.164.239:
+完整数据来自 141.101.114.192:
 {
-    "ip": "104.17.164.239",
+    "ip": "141.101.114.192",
+    "city": "Munich",
+    "region": "Bavaria",
+    "country": "DE",
+    "loc": "48.1345,11.5710",
+    "postal": "80331",
+    "timezone": "Europe/Berlin",
+    "anycast": true,
+    "asn": {
+        "asn": "AS13335",
+        "name": "Cloudflare, Inc.",
+        "domain": "cloudflare.com",
+        "route": "141.101.114.0/23",
+        "type": "hosting"
+    },
+    "company": {
+        "name": "CloudFlare, Inc.",
+        "domain": "cloudflare.com",
+        "type": "hosting"
+    },
+    "privacy": {
+        "vpn": false,
+        "proxy": false,
+        "tor": false,
+        "relay": false,
+        "hosting": true,
+        "service": ""
+    },
+    "abuse": {
+        "address": "101 Townsend Street, San Francisco, CA 94107, US",
+        "country": "DE",
+        "email": "abuse@cloudflare.com",
+        "name": "CloudFlare, Inc.",
+        "network": "141.101.112.0/21",
+        "phone": "+49 89 2555 2276"
+    },
+    "domains": {
+        "total": 0,
+        "domains": []
+    }
+}
+
+完整数据来自 104.16.11.103:
+{
+    "ip": "104.16.11.103",
     "city": "San Francisco",
     "region": "California",
     "country": "US",
@@ -1279,7 +1530,7 @@
         "asn": "AS13335",
         "name": "Cloudflare, Inc.",
         "domain": "cloudflare.com",
-        "route": "104.17.160.0/20",
+        "route": "104.16.0.0/20",
         "type": "hosting"
     },
     "company": {
@@ -1304,15 +1555,21 @@
         "phone": "+1-650-319-8930"
     },
     "domains": {
-        "page": 0,
-        "total": 0,
-        "domains": []
+        "ip": "104.16.11.103",
+        "total": 19,
+        "domains": [
+            "syngentaagriclime.com.au",
+            "yqu58b.cn",
+            "durivo.com.au",
+            "linshena.cn",
+            "seedcare.au"
+        ]
     }
 }
 
-完整数据来自 104.16.252.40:
+完整数据来自 104.16.15.123:
 {
-    "ip": "104.16.252.40",
+    "ip": "104.16.15.123",
     "city": "San Francisco",
     "region": "California",
     "country": "US",
@@ -1324,7 +1581,7 @@
         "asn": "AS13335",
         "name": "Cloudflare, Inc.",
         "domain": "cloudflare.com",
-        "route": "104.16.240.0/20",
+        "route": "104.16.0.0/20",
         "type": "hosting"
     },
     "company": {
@@ -1349,15 +1606,17 @@
         "phone": "+1-650-319-8930"
     },
     "domains": {
-        "page": 0,
-        "total": 0,
-        "domains": []
+        "ip": "104.16.15.123",
+        "total": 1,
+        "domains": [
+            "bu5ild.cn"
+        ]
     }
 }
 
-完整数据来自 104.16.240.80:
+完整数据来自 104.16.12.80:
 {
-    "ip": "104.16.240.80",
+    "ip": "104.16.12.80",
     "city": "San Francisco",
     "region": "California",
     "country": "US",
@@ -1369,7 +1628,7 @@
         "asn": "AS13335",
         "name": "Cloudflare, Inc.",
         "domain": "cloudflare.com",
-        "route": "104.16.240.0/20",
+        "route": "104.16.0.0/20",
         "type": "hosting"
     },
     "company": {
@@ -1394,59 +1653,17 @@
         "phone": "+1-650-319-8930"
     },
     "domains": {
-        "page": 0,
-        "total": 0,
-        "domains": []
+        "ip": "104.16.12.80",
+        "total": 1,
+        "domains": [
+            "j15tb.cn"
+        ]
     }
 }
 
-完整数据来自 104.18.94.214:
+完整数据来自 198.41.209.129:
 {
-    "ip": "104.18.94.214",
-    "city": "San Francisco",
-    "region": "California",
-    "country": "US",
-    "loc": "37.7621,-122.3971",
-    "postal": "94107",
-    "timezone": "America/Los_Angeles",
-    "anycast": true,
-    "asn": {
-        "asn": "AS13335",
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "route": "104.18.80.0/20",
-        "type": "hosting"
-    },
-    "company": {
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "type": "hosting"
-    },
-    "privacy": {
-        "vpn": false,
-        "proxy": false,
-        "tor": false,
-        "relay": false,
-        "hosting": true,
-        "service": ""
-    },
-    "abuse": {
-        "address": "US, CA, San Francisco, 101 Townsend Street, 94107",
-        "country": "US",
-        "email": "abuse@cloudflare.com",
-        "name": "Abuse",
-        "network": "104.16.0.0/12",
-        "phone": "+1-650-319-8930"
-    },
-    "domains": {
-        "total": 0,
-        "domains": []
-    }
-}
-
-完整数据来自 198.41.209.187:
-{
-    "ip": "198.41.209.187",
+    "ip": "198.41.209.129",
     "city": "San Francisco",
     "region": "California",
     "country": "US",
@@ -1489,9 +1706,9 @@
     }
 }
 
-完整数据来自 104.16.246.5:
+完整数据来自 198.41.212.213:
 {
-    "ip": "104.16.246.5",
+    "ip": "198.41.212.213",
     "city": "San Francisco",
     "region": "California",
     "country": "US",
@@ -1503,7 +1720,7 @@
         "asn": "AS13335",
         "name": "Cloudflare, Inc.",
         "domain": "cloudflare.com",
-        "route": "104.16.240.0/20",
+        "route": "198.41.212.0/24",
         "type": "hosting"
     },
     "company": {
@@ -1524,7 +1741,7 @@
         "country": "US",
         "email": "abuse@cloudflare.com",
         "name": "Abuse",
-        "network": "104.16.0.0/12",
+        "network": "198.41.128.0/17",
         "phone": "+1-650-319-8930"
     },
     "domains": {
@@ -1534,9 +1751,9 @@
     }
 }
 
-完整数据来自 172.64.159.226:
+完整数据来自 198.41.221.142:
 {
-    "ip": "172.64.159.226",
+    "ip": "198.41.221.142",
     "city": "San Francisco",
     "region": "California",
     "country": "US",
@@ -1548,7 +1765,7 @@
         "asn": "AS13335",
         "name": "Cloudflare, Inc.",
         "domain": "cloudflare.com",
-        "route": "172.64.159.0/24",
+        "route": "198.41.220.0/23",
         "type": "hosting"
     },
     "company": {
@@ -1569,7 +1786,7 @@
         "country": "US",
         "email": "abuse@cloudflare.com",
         "name": "Abuse",
-        "network": "172.64.0.0/13",
+        "network": "198.41.128.0/17",
         "phone": "+1-650-319-8930"
     },
     "domains": {
@@ -1579,9 +1796,9 @@
     }
 }
 
-完整数据来自 104.17.172.74:
+完整数据来自 198.41.220.83:
 {
-    "ip": "104.17.172.74",
+    "ip": "198.41.220.83",
     "city": "San Francisco",
     "region": "California",
     "country": "US",
@@ -1593,7 +1810,7 @@
         "asn": "AS13335",
         "name": "Cloudflare, Inc.",
         "domain": "cloudflare.com",
-        "route": "104.17.160.0/20",
+        "route": "198.41.220.0/23",
         "type": "hosting"
     },
     "company": {
@@ -1614,510 +1831,7 @@
         "country": "US",
         "email": "abuse@cloudflare.com",
         "name": "Abuse",
-        "network": "104.16.0.0/12",
-        "phone": "+1-650-319-8930"
-    },
-    "domains": {
-        "ip": "104.17.172.74",
-        "total": 10,
-        "domains": [
-            "huxley.com",
-            "huxley.fr",
-            "huxley.co.uk",
-            "huxleyit.com",
-            "huxleyeurope.co.uk"
-        ]
-    }
-}
-
-完整数据来自 104.18.83.53:
-{
-    "ip": "104.18.83.53",
-    "city": "San Francisco",
-    "region": "California",
-    "country": "US",
-    "loc": "37.7621,-122.3971",
-    "postal": "94107",
-    "timezone": "America/Los_Angeles",
-    "anycast": true,
-    "asn": {
-        "asn": "AS13335",
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "route": "104.18.80.0/20",
-        "type": "hosting"
-    },
-    "company": {
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "type": "hosting"
-    },
-    "privacy": {
-        "vpn": false,
-        "proxy": false,
-        "tor": false,
-        "relay": false,
-        "hosting": true,
-        "service": ""
-    },
-    "abuse": {
-        "address": "US, CA, San Francisco, 101 Townsend Street, 94107",
-        "country": "US",
-        "email": "abuse@cloudflare.com",
-        "name": "Abuse",
-        "network": "104.16.0.0/12",
-        "phone": "+1-650-319-8930"
-    },
-    "domains": {
-        "page": 0,
-        "total": 0,
-        "domains": []
-    }
-}
-
-完整数据来自 104.18.81.44:
-{
-    "ip": "104.18.81.44",
-    "city": "San Francisco",
-    "region": "California",
-    "country": "US",
-    "loc": "37.7621,-122.3971",
-    "postal": "94107",
-    "timezone": "America/Los_Angeles",
-    "anycast": true,
-    "asn": {
-        "asn": "AS13335",
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "route": "104.18.80.0/20",
-        "type": "hosting"
-    },
-    "company": {
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "type": "hosting"
-    },
-    "privacy": {
-        "vpn": false,
-        "proxy": false,
-        "tor": false,
-        "relay": false,
-        "hosting": true,
-        "service": ""
-    },
-    "abuse": {
-        "address": "US, CA, San Francisco, 101 Townsend Street, 94107",
-        "country": "US",
-        "email": "abuse@cloudflare.com",
-        "name": "Abuse",
-        "network": "104.16.0.0/12",
-        "phone": "+1-650-319-8930"
-    },
-    "domains": {
-        "page": 0,
-        "total": 0,
-        "domains": []
-    }
-}
-
-完整数据来自 104.17.174.200:
-{
-    "ip": "104.17.174.200",
-    "city": "San Francisco",
-    "region": "California",
-    "country": "US",
-    "loc": "37.7621,-122.3971",
-    "postal": "94107",
-    "timezone": "America/Los_Angeles",
-    "anycast": true,
-    "asn": {
-        "asn": "AS13335",
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "route": "104.17.160.0/20",
-        "type": "hosting"
-    },
-    "company": {
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "type": "hosting"
-    },
-    "privacy": {
-        "vpn": false,
-        "proxy": false,
-        "tor": false,
-        "relay": false,
-        "hosting": true,
-        "service": ""
-    },
-    "abuse": {
-        "address": "US, CA, San Francisco, 101 Townsend Street, 94107",
-        "country": "US",
-        "email": "abuse@cloudflare.com",
-        "name": "Abuse",
-        "network": "104.16.0.0/12",
-        "phone": "+1-650-319-8930"
-    },
-    "domains": {
-        "page": 0,
-        "total": 0,
-        "domains": []
-    }
-}
-
-完整数据来自 104.17.62.79:
-{
-    "ip": "104.17.62.79",
-    "city": "San Francisco",
-    "region": "California",
-    "country": "US",
-    "loc": "37.7621,-122.3971",
-    "postal": "94107",
-    "timezone": "America/Los_Angeles",
-    "anycast": true,
-    "asn": {
-        "asn": "AS13335",
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "route": "104.17.48.0/20",
-        "type": "hosting"
-    },
-    "company": {
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "type": "hosting"
-    },
-    "privacy": {
-        "vpn": false,
-        "proxy": false,
-        "tor": false,
-        "relay": false,
-        "hosting": true,
-        "service": ""
-    },
-    "abuse": {
-        "address": "US, CA, San Francisco, 101 Townsend Street, 94107",
-        "country": "US",
-        "email": "abuse@cloudflare.com",
-        "name": "Abuse",
-        "network": "104.16.0.0/12",
-        "phone": "+1-650-319-8930"
-    },
-    "domains": {
-        "page": 0,
-        "total": 0,
-        "domains": []
-    }
-}
-
-完整数据来自 104.18.232.171:
-{
-    "ip": "104.18.232.171",
-    "city": "San Francisco",
-    "region": "California",
-    "country": "US",
-    "loc": "37.7621,-122.3971",
-    "postal": "94107",
-    "timezone": "America/Los_Angeles",
-    "anycast": true,
-    "asn": {
-        "asn": "AS13335",
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "route": "104.18.224.0/20",
-        "type": "hosting"
-    },
-    "company": {
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "type": "hosting"
-    },
-    "privacy": {
-        "vpn": false,
-        "proxy": false,
-        "tor": false,
-        "relay": false,
-        "hosting": true,
-        "service": ""
-    },
-    "abuse": {
-        "address": "US, CA, San Francisco, 101 Townsend Street, 94107",
-        "country": "US",
-        "email": "abuse@cloudflare.com",
-        "name": "Abuse",
-        "network": "104.16.0.0/12",
-        "phone": "+1-650-319-8930"
-    },
-    "domains": {
-        "page": 0,
-        "total": 0,
-        "domains": []
-    }
-}
-
-完整数据来自 190.93.246.134:
-{
-    "ip": "190.93.246.134",
-    "hostname": "cf-190-93-246-134.cloudflare.com",
-    "city": "Uruca",
-    "region": "San Jos\u00e9",
-    "country": "CR",
-    "loc": "9.9333,-84.2000",
-    "postal": "10904",
-    "timezone": "America/Costa_Rica",
-    "anycast": true,
-    "asn": {
-        "asn": "AS13335",
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "route": "190.93.244.0/22",
-        "type": "hosting"
-    },
-    "company": {
-        "name": "CloudFlare Latin America S.R.L",
-        "domain": "cloudflare.com",
-        "type": "hosting"
-    },
-    "privacy": {
-        "vpn": false,
-        "proxy": false,
-        "tor": false,
-        "relay": false,
-        "hosting": true,
-        "service": ""
-    },
-    "abuse": {
-        "address": "Townsend Street, 101, -, 94107 - San Francisco - CA",
-        "country": "US",
-        "email": "noc@cloudflare.com",
-        "name": "Cloudflare Network Operations",
-        "network": "190.93.240.0/20",
-        "phone": "+1  6503198930 [0000]"
-    },
-    "domains": {
-        "page": 0,
-        "total": 0,
-        "domains": []
-    }
-}
-
-完整数据来自 104.17.121.139:
-{
-    "ip": "104.17.121.139",
-    "city": "San Francisco",
-    "region": "California",
-    "country": "US",
-    "loc": "37.7621,-122.3971",
-    "postal": "94107",
-    "timezone": "America/Los_Angeles",
-    "anycast": true,
-    "asn": {
-        "asn": "AS13335",
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "route": "104.17.112.0/20",
-        "type": "hosting"
-    },
-    "company": {
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "type": "hosting"
-    },
-    "privacy": {
-        "vpn": false,
-        "proxy": false,
-        "tor": false,
-        "relay": false,
-        "hosting": true,
-        "service": ""
-    },
-    "abuse": {
-        "address": "US, CA, San Francisco, 101 Townsend Street, 94107",
-        "country": "US",
-        "email": "abuse@cloudflare.com",
-        "name": "Abuse",
-        "network": "104.16.0.0/12",
-        "phone": "+1-650-319-8930"
-    },
-    "domains": {
-        "total": 0,
-        "domains": []
-    }
-}
-
-完整数据来自 104.19.221.111:
-{
-    "ip": "104.19.221.111",
-    "city": "San Francisco",
-    "region": "California",
-    "country": "US",
-    "loc": "37.7621,-122.3971",
-    "postal": "94107",
-    "timezone": "America/Los_Angeles",
-    "anycast": true,
-    "asn": {
-        "asn": "AS13335",
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "route": "104.19.208.0/20",
-        "type": "hosting"
-    },
-    "company": {
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "type": "hosting"
-    },
-    "privacy": {
-        "vpn": false,
-        "proxy": false,
-        "tor": false,
-        "relay": false,
-        "hosting": true,
-        "service": ""
-    },
-    "abuse": {
-        "address": "US, CA, San Francisco, 101 Townsend Street, 94107",
-        "country": "US",
-        "email": "abuse@cloudflare.com",
-        "name": "Abuse",
-        "network": "104.16.0.0/12",
-        "phone": "+1-650-319-8930"
-    },
-    "domains": {
-        "page": 0,
-        "total": 0,
-        "domains": []
-    }
-}
-
-完整数据来自 104.16.199.234:
-{
-    "ip": "104.16.199.234",
-    "city": "San Francisco",
-    "region": "California",
-    "country": "US",
-    "loc": "37.7621,-122.3971",
-    "postal": "94107",
-    "timezone": "America/Los_Angeles",
-    "anycast": true,
-    "asn": {
-        "asn": "AS13335",
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "route": "104.16.192.0/20",
-        "type": "hosting"
-    },
-    "company": {
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "type": "hosting"
-    },
-    "privacy": {
-        "vpn": false,
-        "proxy": false,
-        "tor": false,
-        "relay": false,
-        "hosting": true,
-        "service": ""
-    },
-    "abuse": {
-        "address": "US, CA, San Francisco, 101 Townsend Street, 94107",
-        "country": "US",
-        "email": "abuse@cloudflare.com",
-        "name": "Abuse",
-        "network": "104.16.0.0/12",
-        "phone": "+1-650-319-8930"
-    },
-    "domains": {
-        "ip": "104.16.199.234",
-        "total": 1,
-        "domains": [
-            "allergandirect.es"
-        ]
-    }
-}
-
-完整数据来自 104.16.204.242:
-{
-    "ip": "104.16.204.242",
-    "city": "San Francisco",
-    "region": "California",
-    "country": "US",
-    "loc": "37.7621,-122.3971",
-    "postal": "94107",
-    "timezone": "America/Los_Angeles",
-    "anycast": true,
-    "asn": {
-        "asn": "AS13335",
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "route": "104.16.192.0/20",
-        "type": "hosting"
-    },
-    "company": {
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "type": "hosting"
-    },
-    "privacy": {
-        "vpn": false,
-        "proxy": false,
-        "tor": false,
-        "relay": false,
-        "hosting": true,
-        "service": ""
-    },
-    "abuse": {
-        "address": "US, CA, San Francisco, 101 Townsend Street, 94107",
-        "country": "US",
-        "email": "abuse@cloudflare.com",
-        "name": "Abuse",
-        "network": "104.16.0.0/12",
-        "phone": "+1-650-319-8930"
-    },
-    "domains": {
-        "page": 0,
-        "total": 0,
-        "domains": []
-    }
-}
-
-完整数据来自 104.19.158.146:
-{
-    "ip": "104.19.158.146",
-    "city": "San Francisco",
-    "region": "California",
-    "country": "US",
-    "loc": "37.7621,-122.3971",
-    "postal": "94107",
-    "timezone": "America/Los_Angeles",
-    "anycast": true,
-    "asn": {
-        "asn": "AS13335",
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "route": "104.19.144.0/20",
-        "type": "hosting"
-    },
-    "company": {
-        "name": "Cloudflare, Inc.",
-        "domain": "cloudflare.com",
-        "type": "hosting"
-    },
-    "privacy": {
-        "vpn": false,
-        "proxy": false,
-        "tor": false,
-        "relay": false,
-        "hosting": true,
-        "service": ""
-    },
-    "abuse": {
-        "address": "US, CA, San Francisco, 101 Townsend Street, 94107",
-        "country": "US",
-        "email": "abuse@cloudflare.com",
-        "name": "Abuse",
-        "network": "104.16.0.0/12",
+        "network": "198.41.128.0/17",
         "phone": "+1-650-319-8930"
     },
     "domains": {
