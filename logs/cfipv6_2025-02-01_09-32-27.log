@@ -1,0 +1,11 @@
+2025-02-01 09:32:27,721 - INFO - Script started.
+2025-02-01 09:32:28,462 - INFO - Fetched 6 IPv6 addresses from https://addressesapi.090227.xyz/cmcc-ipv6
+2025-02-01 09:32:28,882 - INFO - Processed address: [2606:4700:3036:6ed4:260:e367:c3d4:d3bb]#🇭🇰HKG┃CMCC-IPV6
+2025-02-01 09:32:30,069 - INFO - Processed address: [2606:4700:3036:0:a36a:3160:b566:8741]#🇭🇰HKG┃CMCC-IPV6
+2025-02-01 09:32:30,217 - INFO - Processed address: [2606:4700:3036:6ed4:e1ed:36:8916:dace]#🇭🇰HKG┃CMCC-IPV6
+2025-02-01 09:32:30,380 - INFO - Processed address: [2606:4700:3036:ef:95e:7a29:2ccc:d331]#🇭🇰HKG┃CMCC-IPV6
+2025-02-01 09:32:30,801 - INFO - Processed address: [2606:4700:3036:0:a36a:4af2:65e7:a0d6]#🇭🇰HKG┃CMCC-IPV6
+2025-02-01 09:32:30,943 - INFO - Processed address: [2606:4700:3036:6ed4:260:e3e9:a48c:8437]#🇭🇰HKG┃CMCC-IPV6
+2025-02-01 09:32:30,951 - INFO - Processed IPv6 addresses have been written to cfip/cfipv6.txt
+2025-02-01 09:32:35,069 - INFO - Changes have been pushed to GitHub.
+2025-02-01 09:32:35,070 - INFO - Script finished.
